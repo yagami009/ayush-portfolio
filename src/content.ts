@@ -40,6 +40,31 @@ export const siteContent = {
     },
   ],
 
+  notes: {
+    title: "Field notes",
+    intro: "Short logs from the build process. Fragments, not manifestos.",
+    entries: [
+      {
+        date: "Apr 2026",
+        title: "The offline-first constraint is the feature",
+        excerpt:
+          "Building the Cactus SDK agent app taught me that offline isn't a fallback — it's a design constraint that produces better architecture.",
+      },
+      {
+        date: "Mar 2026",
+        title: "Local is not free",
+        excerpt:
+          "On-device and local inference sound clean in theory. In practice, memory pressure and orchestration overhead force sharper architectural choices.",
+      },
+      {
+        date: "Mar 2026",
+        title: "Security changes the way you build agents",
+        excerpt:
+          "The interesting question isn't whether an agent can call a tool. It's what happens when the wrong input reaches the wrong capability boundary.",
+      },
+    ],
+  },
+
   featuredWork: [
     {
       slug: "cerebralx",

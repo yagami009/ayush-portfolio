@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { siteContent } from "../content";
 
-const { hero, proofStrip, featuredWork, links } = siteContent;
+const { hero, proofStrip, featuredWork, links, notes } = siteContent;
 
 const SPRING_BASE = { type: "spring" as const, stiffness: 200, damping: 26 };
 const SPRING_FAST = { type: "spring" as const, stiffness: 260, damping: 28 };
@@ -203,6 +203,49 @@ export function Home() {
             </InViewBlock>
           ))}
         </div>
+      </section>
+
+      <Divider />
+
+      {/* FIELD NOTES */}
+      <section style={{ paddingTop: 80, paddingBottom: 60 }}>
+        <InViewBlock>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 24 }}>
+            <div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em", color: "var(--accent)", marginBottom: 12 }}>
+                {notes.title.toUpperCase()}
+              </div>
+              <p style={{ fontSize: 14, color: "var(--fg3)", maxWidth: 480 }}>{notes.intro}</p>
+            </div>
+            <a href="/blog" style={{ fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500, color: "var(--fg2)", textDecoration: "underline", textUnderlineOffset: 3 }}>View all</a>
+          </div>
+
+          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            {notes.entries.map((entry, i) => (
+              <InViewBlock key={entry.title} delay={i * 0.08}>
+                <a href="/blog" style={{ display: "block", textDecoration: "none" }}>
+                  <div style={{
+                    padding: "20px 0",
+                    borderBottom: i < notes.entries.length - 1 ? "1px solid var(--border)" : "none",
+                    cursor: "pointer",
+                    transition: "opacity 0.15s",
+                  }}
+                    onMouseEnter={e => (e.currentTarget.style.opacity = "0.7")}
+                    onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
+                  >
+                    <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "var(--fg3)", minWidth: 80 }}>{entry.date}</div>
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontFamily: "var(--font-head)", fontSize: 16, fontWeight: 600, color: "var(--fg)", marginBottom: 6 }}>{entry.title}</div>
+                        <div style={{ fontSize: 14, color: "var(--fg2)", lineHeight: 1.6 }}>{entry.excerpt}</div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </InViewBlock>
+            ))}
+          </div>
+        </InViewBlock>
       </section>
 
       <Divider />
