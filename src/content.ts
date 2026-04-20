@@ -92,6 +92,14 @@ export const siteContent = {
     email: "mahajan.ayush9909@gmail.com",
   },
 
+  about: {
+    paragraphs: [
+      "I came up through a non-traditional path. Self-taught, hands-on, and more interested in building than collecting credentials.",
+      "Over the years, I've worked across cybersecurity, embedded systems, electronics, firmware, machine learning deployment, and venture-backed product building. The common thread has never been a single industry. It has been systems.",
+      "I'm most interested in the point where intelligence has to survive reality — where architecture, constraints, tooling, and execution matter more than demos.",
+    ],
+  },
+
   footer: {
     line: "Built with intent.",
   },
