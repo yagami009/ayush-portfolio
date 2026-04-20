@@ -34,7 +34,7 @@ export function Footer() {
         </div>
         <p style={{
           fontFamily: "var(--font-mono)", fontSize: 10,
-          color: "#2e2e2e", letterSpacing: "0.04em",
+          color: "var(--fg3)", letterSpacing: "0.04em",
         }}>{footer.line}</p>
       </div>
     </footer>
