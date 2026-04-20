@@ -77,6 +77,11 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.1); }
+}
+
 /* ─── Responsive layout utilities ─── */
 .page-pad { padding-left: 36px; padding-right: 36px; }
 

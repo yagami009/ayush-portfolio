@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { siteContent } from "../content";
 
-const { hero, proofStrip, featuredWork, links, notes, workCategories, workArchive } = siteContent;
+const { hero, proofStrip, featuredWork, links, notes, workCategories, workArchive, skills, currently } = siteContent;
 
 const SPRING_BASE = { type: "spring" as const, stiffness: 200, damping: 26 };
 const SPRING_FAST = { type: "spring" as const, stiffness: 260, damping: 28 };
@@ -272,6 +272,70 @@ export function Home() {
               GitHub
             </a>
             <span style={{ fontSize: 13, color: "var(--fg3)" }}>{workArchive.description}</span>
+          </div>
+        </InViewBlock>
+
+        {/* Skills Heatmap */}
+        <InViewBlock delay={0.6}>
+          <div style={{ marginTop: 48, paddingTop: 32, borderTop: "1px solid var(--border)" }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.1em", color: "var(--fg3)", marginBottom: 20 }}>
+              DEPTH AREAS
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+              {skills.map((skill, i) => (
+                <div key={skill.name} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+                    <div style={{ fontFamily: "var(--font-head)", fontSize: 14, fontWeight: 600, color: "var(--fg)" }}>
+                      {skill.name}
+                    </div>
+                    <div style={{ display: "flex", gap: 4 }}>
+                      {[1, 2, 3, 4, 5].map(dot => (
+                        <div
+                          key={dot}
+                          style={{
+                            width: 6, height: 6, borderRadius: "50%",
+                            background: dot <= skill.level ? "var(--accent)" : "var(--border)",
+                            transition: "opacity 0.15s",
+                          }}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                  <div style={{ fontSize: 12, color: "var(--fg2)", lineHeight: 1.5 }}>
+                    {skill.detail}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </InViewBlock>
+
+        {/* Currently Building */}
+        <InViewBlock delay={0.7}>
+          <div style={{
+            marginTop: 32, padding: "20px 24px",
+            background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10,
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+              <div style={{
+                width: 8, height: 8, borderRadius: "50%", background: "var(--green)",
+                animation: "pulse 2s ease-in-out infinite",
+              }} />
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.1em", color: "var(--green)" }}>
+                NOW
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+              <div style={{ fontSize: 14, color: "var(--fg)" }}>
+                <span style={{ color: "var(--fg3)" }}>Building:</span> {currently.building}
+              </div>
+              <div style={{ fontSize: 14, color: "var(--fg)" }}>
+                <span style={{ color: "var(--fg3)" }}>Reading:</span> {currently.reading}
+              </div>
+              <div style={{ fontSize: 14, color: "var(--fg)" }}>
+                <span style={{ color: "var(--fg3)" }}>Thinking:</span> {currently.thinking}
+              </div>
+            </div>
           </div>
         </InViewBlock>
       </section>

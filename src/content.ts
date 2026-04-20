@@ -97,6 +97,20 @@ export const siteContent = {
     description: "Code, experiments, and open source contributions",
   },
 
+  skills: [
+    { name: "BCI / Hardware", level: 4, detail: "SSVEP signal processing, embedded systems" },
+    { name: "AI Systems", level: 5, detail: "LLM orchestration, local inference, agents" },
+    { name: "Security / Adversarial ML", level: 4, detail: "AI safety, threat modeling, red-teaming" },
+    { name: "Venture / Fundraising", level: 3, detail: "50+ pitches, term sheets, cap tables" },
+    { name: "Infrastructure / Edge", level: 4, detail: "Offline-first architecture, deployment" },
+  ],
+
+  currently: {
+    building: "Offline AI Agent with Cactus SDK",
+    reading: "AI security feeds and adversarial ML papers",
+    thinking: "How offline constraints reshape agent architecture",
+  },
+
   featuredWork: [
     {
       slug: "cerebralx",
