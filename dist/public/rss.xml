@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ayush Mahajan — Field Notes</title>
+    <link>https://ayushmh.com/blog</link>
+    <description>Thoughts on AI systems, founder journeys, and building intelligence where systems meet execution.</description>
+    <language>en</language>
+    <lastBuildDate>Mon, 20 Apr 2026 00:40:44 GMT</lastBuildDate>
+    <atom:link href="https://ayushmh.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <author>hi@ayushmh.com (Ayush Mahajan)</author>
+    <item>
+      <title>Building Offline-First AI Agents</title>
+      <link>https://ayushmh.com/blog/building-offline-first-ai-agents</link>
+      <guid>https://ayushmh.com/blog/building-offline-first-ai-agents</guid>
+      <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Why the future of AI agents isn&apos;t in the cloud, but on your device. Exploring local LLMs, edge inference, and the architecture of truly personal AI.</description>
+    </item>
+
+    <item>
+      <title>AI Security Red Flags Every Founder Should Know</title>
+      <link>https://ayushmh.com/blog/ai-security-red-flags</link>
+      <guid>https://ayushmh.com/blog/ai-security-red-flags</guid>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>From prompt injection to RCE via tool execution — the attack surface of AI agents is larger than most realize.</description>
+    </item>
+
+    <item>
+      <title>Founder Evaluation at Scale: What VCs Get Wrong</title>
+      <link>https://ayushmh.com/blog/founder-evaluation-at-scale</link>
+      <guid>https://ayushmh.com/blog/founder-evaluation-at-scale</guid>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 GMT</pubDate>
+      <description>After pitching to 50+ investors and building evaluation infrastructure, I&apos;ve seen both sides. Here&apos;s what actually predicts founder success.</description>
+    </item>
+
+    <item>
+      <title>Local Is Not Free: The Hidden Costs of On-Device Inference</title>
+      <link>https://ayushmh.com/blog/local-is-not-free</link>
+      <guid>https://ayushmh.com/blog/local-is-not-free</guid>
+      <pubDate>Wed, 25 Mar 2026 00:00:00 GMT</pubDate>
+      <description>On-device and local inference sound clean in theory. In practice, memory pressure, orchestration overhead, and model behavior force sharper architectural choices than cloud demos ever reveal.</description>
+    </item>
+
+    <item>
+      <title>Security Changes the Way You Build Agents</title>
+      <link>https://ayushmh.com/blog/security-changes-agent-design</link>
+      <guid>https://ayushmh.com/blog/security-changes-agent-design</guid>
+      <pubDate>Wed, 18 Mar 2026 00:00:00 GMT</pubDate>
+      <description>The interesting question isn&apos;t whether an agent can call a tool. It&apos;s what happens when the wrong input reaches the wrong capability boundary.</description>
+    </item>
+
+    <item>
+      <title>Structure Beats Prompt Cleverness</title>
+      <link>https://ayushmh.com/blog/structure-beats-prompting</link>
+      <guid>https://ayushmh.com/blog/structure-beats-prompting</guid>
+      <pubDate>Thu, 12 Mar 2026 00:00:00 GMT</pubDate>
+      <description>The more serious the system gets, the less impressive pure prompting feels. Durable workflows, state, memory, and control surfaces start to matter more.</description>
+    </item>
+
+    <item>
+      <title>From Being Evaluated to Building the Evaluator</title>
+      <link>https://ayushmh.com/blog/from-evaluated-to-evaluator</link>
+      <guid>https://ayushmh.com/blog/from-evaluated-to-evaluator</guid>
+      <pubDate>Thu, 05 Mar 2026 00:00:00 GMT</pubDate>
+      <description>Fundraising for years changes the way you see startup infrastructure. PerPitch came from that shift: moving from founder-side friction to system design for the ecosystem itself.</description>
+    </item>
+  </channel>
+</rss>
