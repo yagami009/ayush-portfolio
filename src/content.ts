@@ -65,6 +65,38 @@ export const siteContent = {
     ],
   },
 
+  workCategories: [
+    {
+      name: "Ventures",
+      description: "Companies founded and led",
+      items: [
+        { name: "Cerebralx", period: "2019 — 2024", detail: "BCI/LLM venture, hardware to fundraising" },
+        { name: "PerPitch", period: "2024 — Present", detail: "AI infrastructure for VC evaluation" },
+      ],
+    },
+    {
+      name: "Systems",
+      description: "Infrastructure and tooling",
+      items: [
+        { name: "Offline AI Agent", period: "Current", detail: "Local-first agent architecture" },
+        { name: "Security Tooling", period: "Ongoing", detail: "AI security research & adversarial ML" },
+      ],
+    },
+    {
+      name: "Research",
+      description: "Publications and deep dives",
+      items: [
+        { name: "BCI + LLM Integration", period: "2022 — 2024", detail: "SSVEP signal processing with language models" },
+        { name: "Local Inference", period: "Current", detail: "On-device ML optimization" },
+      ],
+    },
+  ],
+
+  workArchive: {
+    github: "https://github.com/yagami009",
+    description: "Code, experiments, and open source contributions",
+  },
+
   featuredWork: [
     {
       slug: "cerebralx",

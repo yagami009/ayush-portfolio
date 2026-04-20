@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { siteContent } from "../content";
 
-const { hero, proofStrip, featuredWork, links, notes } = siteContent;
+const { hero, proofStrip, featuredWork, links, notes, workCategories, workArchive } = siteContent;
 
 const SPRING_BASE = { type: "spring" as const, stiffness: 200, damping: 26 };
 const SPRING_FAST = { type: "spring" as const, stiffness: 260, damping: 28 };
@@ -174,24 +174,70 @@ export function Home() {
 
       {/* SELECTED WORK */}
       <section id="work" style={{ paddingTop: 80, paddingBottom: 80 }}>
-        <InViewBlock style={{ marginBottom: 40 }}>
+        {/* Header */}
+        <InViewBlock style={{ marginBottom: 48 }}>
           <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.14em", color: "var(--accent)", marginBottom: 16 }}>
             SELECTED WORK
           </div>
-          <h2 style={{ fontFamily: "var(--font-head)", fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 700, color: "var(--fg)" }}>
-            Three projects.
+          <h2 style={{ fontFamily: "var(--font-head)", fontSize: "clamp(24px, 3vw, 32px)", fontWeight: 700, color: "var(--fg)", marginBottom: 12 }}>
+            Ventures, systems, and research.
           </h2>
+          <p style={{ fontSize: 14, color: "var(--fg3)", maxWidth: 560, lineHeight: 1.6 }}>
+            A chronological arc across hardware, AI infrastructure, and security — from founding ventures to exploring agentic systems.
+          </p>
         </InViewBlock>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        {/* Timeline / Categories Grid */}
+        <InViewBlock delay={0.1}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 1, background: "var(--border)", marginBottom: 48 }}>
+            {workCategories.map((cat, i) => (
+              <div key={cat.name} style={{ background: "var(--bg)", padding: "28px 24px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                  <div style={{ width: 8, height: 8, borderRadius: "50%", background: i === 0 ? "var(--accent)" : i === 1 ? "var(--blue)" : "var(--green)" }} />
+                  <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.1em", color: "var(--fg3)" }}>
+                    {cat.name.toUpperCase()}
+                  </div>
+                </div>
+                <div style={{ fontSize: 13, color: "var(--fg2)", marginBottom: 16 }}>{cat.description}</div>
+                <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                  {cat.items.map(item => (
+                    <div key={item.name}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 8 }}>
+                        <div style={{ fontFamily: "var(--font-head)", fontSize: 14, fontWeight: 600, color: "var(--fg)" }}>{item.name}</div>
+                        <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--fg3)", whiteSpace: "nowrap" }}>{item.period}</div>
+                      </div>
+                      <div style={{ fontSize: 12, color: "var(--fg2)", marginTop: 2 }}>{item.detail}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </InViewBlock>
+
+        {/* Featured Deep Dives */}
+        <InViewBlock delay={0.2}>
+          <div style={{ marginBottom: 24 }}>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: "0.1em", color: "var(--fg3)", marginBottom: 16 }}>
+              DEEP DIVES
+            </div>
+          </div>
+        </InViewBlock>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 16, marginBottom: 32 }}>
           {featuredWork.map((work, i) => (
-            <InViewBlock key={work.slug} delay={i * 0.1}>
+            <InViewBlock key={work.slug} delay={0.25 + i * 0.08}>
               <div style={{ background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10, padding: "28px 24px" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12, flexWrap: "wrap", gap: 8 }}>
-                  <h3 style={{ fontFamily: "var(--font-head)", fontSize: 18, fontWeight: 600, color: "var(--fg)" }}>{work.title}</h3>
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--fg3)" }}>{work.timeframe}</span>
+                  <div>
+                    <h3 style={{ fontFamily: "var(--font-head)", fontSize: 18, fontWeight: 600, color: "var(--fg)", marginBottom: 4 }}>{work.title}</h3>
+                    <div style={{ fontSize: 12, color: "var(--fg3)" }}>{work.role} · {work.timeframe}</div>
+                  </div>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--outcome)", background: "var(--accent2)", padding: "2px 8px", borderRadius: 4 }}>
+                    {work.outcome}
+                  </span>
                 </div>
-                <p style={{ fontSize: 14, color: "var(--fg2)", lineHeight: 1.6, marginBottom: 12 }}>{work.summary}</p>
+                <p style={{ fontSize: 14, color: "var(--fg2)", lineHeight: 1.6, marginBottom: 16 }}>{work.summary}</p>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
                   {work.themes.map(t => (
                     <span key={t} style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--fg3)", background: "var(--bg)", border: "1px solid var(--border)", padding: "2px 8px", borderRadius: 4 }}>
@@ -203,6 +249,31 @@ export function Home() {
             </InViewBlock>
           ))}
         </div>
+
+        {/* Archive Links */}
+        <InViewBlock delay={0.5}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 16, alignItems: "center", paddingTop: 8 }}>
+            <a
+              href={workArchive.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "flex", alignItems: "center", gap: 8,
+                fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500,
+                color: "var(--fg)", padding: "10px 16px", borderRadius: 6,
+                border: "1px solid var(--border)", transition: "background 0.15s",
+              }}
+              onMouseEnter={e => (e.currentTarget.style.background = "var(--bg2)")}
+              onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+            <span style={{ fontSize: 13, color: "var(--fg3)" }}>{workArchive.description}</span>
+          </div>
+        </InViewBlock>
       </section>
 
       <Divider />
