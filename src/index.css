@@ -22,20 +22,22 @@
   --font-mono: 'Space Mono', 'Courier New', monospace;
 }
 
-/* Light theme */
+/* Light theme - clean professional */
 [data-theme="light"] {
-  --bg:      #fafaf9;
-  --bg2:     #f5f5f4;
-  --bg3:     #e7e5e4;
-  --bg4:     #d6d3d1;
-  --fg:      #1c1917;
-  --fg2:     #44403c;
-  --fg3:     #78716c;
-  --accent:  #b45309;
-  --accent2: rgba(180,83,9,0.08);
-  --accent3: rgba(180,83,9,0.15);
-  --border:  #e7e5e4;
-  --border2: #d6d3d1;
+  --bg:      #ffffff;
+  --bg2:     #f8fafc;
+  --bg3:     #f1f5f9;
+  --bg4:     #e2e8f0;
+  --fg:      #0f172a;
+  --fg2:     #334155;
+  --fg3:     #64748b;
+  --accent:  #d97706;
+  --accent2: rgba(217,119,6,0.08);
+  --accent3: rgba(217,119,6,0.15);
+  --border:  #e2e8f0;
+  --border2: #cbd5e1;
+  --green:   #16a34a;
+  --blue:    #2563eb;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
