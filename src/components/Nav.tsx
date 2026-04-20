@@ -5,9 +5,8 @@ import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { label: "Work", href: "#work" },
-  { label: "Focus", href: "#current-focus" },
-  { label: "Arc", href: "#arc" },
-  { label: "Notes", href: "#notes" },
+  { label: "Writing", href: "/blog" },
+  { label: "About", href: "/about" },
 ];
 
 export function Nav() {
