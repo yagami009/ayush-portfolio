@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { siteContent } from "../content";
 
-const { hero, proofStrip, currentFocus, featuredWork, founderArc, recognition, operatingLayer, notes, about, links, brand, testimonials } = siteContent;
+const { hero, proofStrip, currentFocus, featuredWork, founderArc, recognition, operatingLayer, notes, about, links, brand } = siteContent;
 
 type FocusArea = typeof currentFocus.areas[0];
 type WorkItem = typeof featuredWork[0];
@@ -518,67 +518,6 @@ export function Home() {
               ))}
             </div>
           </InViewBlock>
-        </div>
-      </section>
-
-      <Divider />
-
-      {/* ═══ TESTIMONIALS ═══ */}
-      <section style={{ paddingTop: 88, paddingBottom: 88 }}>
-        <InViewBlock from="left" style={{ marginBottom: 52 }}>
-          <Label>What people say</Label>
-          <SectionHeading>Words from collaborators.</SectionHeading>
-        </InViewBlock>
-        <div className="three-col-grid" style={{ border: "1px solid var(--border)", borderRadius: 10, overflow: "hidden" }}>
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ ...SPRING_BASE, delay: i * 0.1 }}
-              style={{
-                background: "var(--bg2)",
-                padding: "32px 28px",
-                borderRight: i < testimonials.length - 1 ? "1px solid var(--border)" : "none",
-              }}
-            >
-              <p
-                style={{
-                  fontSize: 15,
-                  color: "var(--fg2)",
-                  lineHeight: 1.7,
-                  marginBottom: 24,
-                  fontStyle: "italic",
-                }}
-              >
-                "{t.quote}"
-              </p>
-              <div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-head)",
-                    fontSize: 14,
-                    fontWeight: 600,
-                    color: "var(--fg)",
-                    marginBottom: 4,
-                  }}
-                >
-                  {t.author}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 10,
-                    letterSpacing: "0.06em",
-                    color: "var(--fg3)",
-                  }}
-                >
-                  {t.role} · {t.context}
-                </div>
-              </div>
-            </motion.div>
-          ))}
         </div>
       </section>
 
