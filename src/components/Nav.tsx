@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { siteContent } from "../content";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { label: "Work", href: "#work" },
   { label: "Focus", href: "#current-focus" },
   { label: "Arc", href: "#arc" },
   { label: "Notes", href: "#notes" },
-  { label: "About", href: "#about" },
 ];
 
 export function Nav() {
@@ -115,6 +115,20 @@ export function Nav() {
                 }}
               >Writing</span>
             </Link>
+            <Link href="/about">
+              <span style={{
+                fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500,
+                color: location === "/about" ? "var(--fg)" : "var(--fg3)",
+                padding: "6px 12px", borderRadius: 6, cursor: "pointer",
+                transition: "color 0.15s, background 0.15s",
+              }}
+                onMouseEnter={e => { e.currentTarget.style.color = "var(--fg)"; e.currentTarget.style.background = "var(--bg3)"; }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.color = location === "/about" ? "var(--fg)" : "var(--fg3)";
+                  e.currentTarget.style.background = "transparent";
+                }}
+              >About</span>
+            </Link>
             <a href={`mailto:${siteContent.links.email}`} style={{
               marginLeft: 10, fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600,
               color: "var(--bg)", background: "var(--accent)",
@@ -124,6 +138,7 @@ export function Nav() {
               onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
               onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
             >Contact</a>
+            <ThemeToggle />
           </div>
 
           {/* Hamburger button (mobile only) */}
@@ -181,6 +196,19 @@ export function Nav() {
             onMouseLeave={e => (e.currentTarget.style.color = location.startsWith("/blog") ? "var(--fg)" : "var(--fg2)")}
           >Writing</span>
         </Link>
+        <Link href="/about">
+          <span
+            onClick={() => setMenuOpen(false)}
+            style={{
+              fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500,
+              color: location === "/about" ? "var(--fg)" : "var(--fg2)",
+              padding: "12px 4px", borderBottom: "1px solid var(--border)",
+              cursor: "pointer", transition: "color 0.15s",
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = "var(--fg)")}
+            onMouseLeave={e => (e.currentTarget.style.color = location === "/about" ? "var(--fg)" : "var(--fg2)")}
+          >About</span>
+        </Link>
         <a
           href={`mailto:${siteContent.links.email}`}
           onClick={() => setMenuOpen(false)}
@@ -191,6 +219,9 @@ export function Nav() {
             letterSpacing: "0.01em", textAlign: "center",
           }}
         >Contact</a>
+        <div style={{ marginTop: 12, display: "flex", justifyContent: "center" }}>
+          <ThemeToggle />
+        </div>
       </div>
     </>
   );

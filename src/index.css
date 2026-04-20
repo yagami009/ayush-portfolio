@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
+/* Dark theme (default) */
 :root {
   --bg:      #0d0d0d;
   --bg2:     #141414;
@@ -21,6 +22,22 @@
   --font-mono: 'Space Mono', 'Courier New', monospace;
 }
 
+/* Light theme */
+[data-theme="light"] {
+  --bg:      #fafaf9;
+  --bg2:     #f5f5f4;
+  --bg3:     #e7e5e4;
+  --bg4:     #d6d3d1;
+  --fg:      #1c1917;
+  --fg2:     #44403c;
+  --fg3:     #78716c;
+  --accent:  #b45309;
+  --accent2: rgba(180,83,9,0.08);
+  --accent3: rgba(180,83,9,0.15);
+  --border:  #e7e5e4;
+  --border2: #d6d3d1;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -36,6 +53,7 @@ body {
   font-size: 15px;
   line-height: 1.65;
   min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::selection { background: var(--accent3); color: var(--fg); }
@@ -43,7 +61,7 @@ a { color: inherit; text-decoration: none; }
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #2a2a2a; }
+::-webkit-scrollbar-thumb { background: var(--border2); }
 
 h1, h2, h3, h4 { font-family: var(--font-head); }
 
@@ -70,7 +88,8 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
 }
 .nav-mobile-panel {
   display: flex; position: fixed; top: 60px; left: 0; right: 0;
-  background: rgba(13,13,13,0.97); backdrop-filter: blur(20px);
+  background: var(--bg);
+  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
   z-index: 99; flex-direction: column; padding: 12px 20px 28px; gap: 2px;
   opacity: 0; transform: translateY(-10px); pointer-events: none;
@@ -133,4 +152,23 @@ h1, h2, h3, h4 { font-family: var(--font-head); }
   .arc-content         { padding-left: 0; }
   .arc-period          { text-align: left; padding-right: 0; padding-bottom: 4px; }
   .contact-cta-card    { padding: 40px 24px; }
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  cursor: pointer;
+  color: var(--fg3);
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.theme-toggle:hover {
+  background: var(--bg2);
+  color: var(--fg);
+  border-color: var(--border2);
 }

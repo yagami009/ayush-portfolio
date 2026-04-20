@@ -11,6 +11,7 @@ import { Writing } from "./pages/Writing";
 import { Agents } from "./pages/Agents";
 import { Blog } from "./pages/Blog";
 import { BlogPost } from "./pages/BlogPost";
+import { About } from "./pages/About";
 
 function NotFound() {
   return (
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/blog" component={Blog} />
       <Route path="/blog/:slug" component={BlogPost} />
       <Route path="/agents" component={Agents} />
+      <Route path="/about" component={About} />
       <Route component={NotFound} />
     </Switch>
   );

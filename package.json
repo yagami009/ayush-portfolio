@@ -76,6 +76,7 @@
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
+    "fuse.js": "^7.3.0",
     "gray-matter": "^4.0.3",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1"

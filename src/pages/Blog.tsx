@@ -2,6 +2,10 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { getAllPosts, formatDate, BlogPost } from "../lib/blog";
 import { siteContent } from "../content";
+import { useBlogSearch } from "../hooks/useBlogSearch";
+import { useTagFilter } from "../hooks/useTagFilter";
+import { SearchBox } from "../components/SearchBox";
+import { TagFilter } from "../components/TagFilter";
 
 const SPRING_BASE = { type: "spring" as const, stiffness: 200, damping: 26 };
 
@@ -100,6 +104,24 @@ export function Blog() {
   const posts = getAllPosts();
   const { brand } = siteContent;
 
+  // Combine search and tag filter
+  const {
+    selectedTag,
+    filteredPosts: postsByTag,
+    handleSelectTag,
+    hasFilter
+  } = useTagFilter(posts);
+
+  const {
+    query,
+    results: searchResults,
+    handleSearch,
+    hasResults
+  } = useBlogSearch(hasFilter ? postsByTag : posts);
+
+  const displayPosts = query ? searchResults : postsByTag;
+  const hasContent = displayPosts.length > 0;
+
   return (
     <div className="page-pad" style={{ maxWidth: 880, margin: "0 auto", paddingTop: 100, paddingBottom: 100 }}>
       <motion.div {...fadeInUp(0)} style={{ marginBottom: 48 }}>
@@ -132,17 +154,39 @@ export function Blog() {
             color: "var(--fg3)",
             lineHeight: 1.7,
             maxWidth: 540,
+            marginBottom: 32,
           }}
         >
           Thoughts on AI systems, founder journeys, and building intelligence where
           systems meet execution.
         </p>
+
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <SearchBox value={query} onSearch={handleSearch} />
+          {!query && <TagFilter posts={posts} selectedTag={selectedTag} onSelectTag={handleSelectTag} />}
+        </div>
       </motion.div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        {posts.map((post, index) => (
-          <BlogCard key={post.slug} post={post} index={index} />
-        ))}
+        {hasContent ? (
+          displayPosts.map((post, index) => (
+            <BlogCard key={post.slug} post={post} index={index} />
+          ))
+        ) : (
+          <motion.div
+            {...fadeInUp(0)}
+            style={{
+              textAlign: "center",
+              padding: "40px 20px",
+              color: "var(--fg3)",
+            }}
+          >
+            <p style={{ fontSize: 15, marginBottom: 8 }}>No articles found</p>
+            <p style={{ fontSize: 13 }}>
+              {query ? "Try a different search term" : "No posts in this category"}
+            </p>
+          </motion.div>
+        )}
       </div>
 
       <motion.div {...fadeInUp(0.4)} style={{ marginTop: 64, textAlign: "center" }}>

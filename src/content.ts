@@ -319,6 +319,27 @@ export const siteContent = {
   footer: {
     line: "Built with intent. Updated as the work evolves.",
   },
+
+  testimonials: [
+    {
+      quote: "Ayush brings a rare combination of technical depth and founder instinct. His work on Cerebralx showed real hustle.",
+      author: "Investor",
+      role: "Early-stage VC",
+      context: "After Cerebralx pitch",
+    },
+    {
+      quote: "The security background shows in everything he builds. Always thinking about failure modes before they happen.",
+      author: "Collaborator",
+      role: "Engineering Lead",
+      context: "On PerPitch architecture",
+    },
+    {
+      quote: "Self-taught, hands-on, and obsessed with shipping. Exactly the kind of builder you want in early stages.",
+      author: "Mentor",
+      role: "Accelerator Director",
+      context: "TiECon 2022",
+    },
+  ],
 };
 
 export const agentData = [
