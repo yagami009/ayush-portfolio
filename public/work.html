@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Ayush Mahajan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0d0c0a;--bg2:#131210;--bg3:#1a1814;--border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);--text:#ede9e1;--muted:#857f74;--dim:#4a4640;--amber:#e09830;--amber-bg:rgba(224,152,48,0.10);--teal:#2a9e7a;--teal-bg:rgba(42,158,122,0.10);--serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',monospace;--radius:2px;--nav-h:60px}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:0.022;pointer-events:none;z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;border-bottom:1px solid var(--border);background:rgba(13,12,10,0.92);backdrop-filter:blur(14px)}
+.nav-logo{font-family:var(--serif);font-size:0.95rem;font-weight:300;color:var(--text);text-decoration:none;letter-spacing:-0.01em}
+.nav-links{display:flex;align-items:center;list-style:none}
+.nav-links li a{display:block;padding:0 1rem;font-size:0.72rem;font-weight:400;color:var(--muted);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.18s;line-height:var(--nav-h);border-bottom:2px solid transparent}
+.nav-links li a:hover{color:var(--text)}
+.nav-links li a.active{color:var(--text);border-bottom-color:var(--amber)}
+.nav-cta{color:var(--bg)!important;background:var(--amber);padding:0.4rem 1rem!important;border-radius:var(--radius);border-bottom:none!important;line-height:1.4!important}
+.page{padding-top:var(--nav-h)}
+.container{max-width:1100px;margin:0 auto;padding:0 2.5rem}
+.section{padding:6rem 0}
+.eyebrow{font-family:var(--mono);font-size:0.66rem;color:var(--amber);letter-spacing:0.12em;text-transform:uppercase;display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem}
+.eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--amber);flex-shrink:0}
+.section-rule{display:flex;align-items:center;gap:1.25rem;margin-bottom:3rem}
+.section-rule-label{font-family:var(--mono);font-size:0.63rem;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap}
+.section-rule-line{flex:1;height:1px;background:var(--border)}
+h1.display{font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.8rem);font-weight:300;line-height:1.06;letter-spacing:-0.025em;color:var(--text)}
+h1.display em{font-style:italic;color:var(--muted)}
+p.lead{font-size:1rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:540px}
+.tag{display:inline-block;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.07em;padding:0.18rem 0.55rem;border:1px solid var(--border);border-radius:var(--radius);color:var(--dim)}
+.tag-amber{border-color:rgba(224,152,48,0.3);color:var(--amber);background:var(--amber-bg)}
+.tag-teal{border-color:rgba(42,158,122,0.3);color:var(--teal);background:var(--teal-bg)}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:0.75rem}
+.footer-mono{font-family:var(--mono);font-size:0.62rem;color:var(--dim);letter-spacing:0.06em}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
+
+.page-hero{padding:6rem 0 4rem;border-bottom:1px solid var(--border)}
+.venture{padding:3.5rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:190px 1fr;gap:4rem;align-items:start}
+.v-period{font-family:var(--mono);font-size:0.6rem;color:var(--amber);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem}
+.v-role{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.08em;margin-bottom:1.25rem;line-height:1.6}
+.v-tags{display:flex;flex-direction:column;gap:0.35rem}
+.v-tag{font-family:var(--mono);font-size:0.58rem;color:var(--dim);letter-spacing:0.06em}
+.v-title{font-family:var(--serif);font-size:1.75rem;font-weight:300;letter-spacing:-0.015em;color:var(--text);line-height:1.15;margin-bottom:0.5rem}
+.v-summary{font-size:0.95rem;color:var(--amber);font-weight:300;margin-bottom:1.5rem;font-family:var(--serif);font-style:italic}
+.v-body{font-size:0.88rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:1.5rem}
+.v-body p{margin-bottom:1rem}
+.v-body p:last-child{margin-bottom:0}
+.v-outcome{display:flex;gap:0.75rem;align-items:start;padding:1rem 1.25rem;background:var(--bg2);border-left:2px solid var(--amber);font-size:0.82rem;color:var(--muted);line-height:1.65;font-weight:300}
+.v-outcome-label{font-family:var(--mono);font-size:0.58rem;color:var(--amber);letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap;padding-top:0.15rem}
+.builds-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
+.build-card{background:var(--bg);padding:2rem;transition:background 0.2s;position:relative}
+.build-card:hover{background:var(--bg3)}
+.build-status{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem}
+.s-dot{width:5px;height:5px;border-radius:50%}
+.s-active .s-dot{background:var(--teal);animation:pulse 2s ease infinite}
+.s-progress .s-dot{background:var(--amber);animation:pulse 2s ease 0.4s infinite}
+.s-done .s-dot{background:var(--dim)}
+.s-active{color:var(--teal)}.s-progress{color:var(--amber)}.s-done{color:var(--dim)}
+.build-title{font-family:var(--serif);font-size:1.15rem;font-weight:300;color:var(--text);line-height:1.25;margin-bottom:0.65rem}
+.build-desc{font-size:0.82rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1.1rem}
+.build-insight{font-size:0.78rem;color:var(--dim);line-height:1.6;border-top:1px solid var(--border);padding-top:0.85rem;margin-top:0.85rem;font-style:italic;font-family:var(--serif)}
+.build-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-top:0.85rem}
+@media(max-width:760px){
+  .venture{grid-template-columns:1fr;gap:1.5rem}
+  .v-tags{flex-direction:row;flex-wrap:wrap}
+  .builds-grid{grid-template-columns:1fr}
+  .container{padding:0 1.5rem}
+  nav{padding:0 1.5rem}
+}
+</style>
+</head>
+<body class="page">
+<nav>
+  <a href="index.html" class="nav-logo">Ayush Mahajan</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="work.html" class="active">Work</a></li>
+    <li><a href="lab.html">Lab</a></li>
+    <li><a href="writing.html">Writing</a></li>
+    <li><a href="now.html">Now</a></li>
+    <li><a href="mailto:mahajan.ayush9909@gmail.com" class="nav-cta">Connect</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="eyebrow">Work</div>
+    <h1 class="display">Ventures &amp; <em>technical builds</em></h1>
+    <p class="lead" style="margin-top:1.25rem">Two sections: the ventures I've founded and led; and the technical builds I'm shipping or have shipped. Different in scale, the same in how I approach them.</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="section-rule reveal"><span class="section-rule-label">Ventures</span><div class="section-rule-line"></div></div>
+
+    <div class="venture reveal">
+      <div>
+        <div class="v-period">2019–2024</div>
+        <div class="v-role">Founder &amp; Principal Engineer</div>
+        <div class="v-tags">
+          <span class="v-tag">Hardtech · BCI / SSVEP</span>
+          <span class="v-tag">Embedded systems</span>
+          <span class="v-tag">Firmware</span>
+          <span class="v-tag">Real-time ML</span>
+          <span class="v-tag">Fundraising</span>
+          <span class="v-tag">Healthcare</span>
+        </div>
+      </div>
+      <div>
+        <div class="v-title">Cerebralx</div>
+        <div class="v-summary">LLM-powered SSVEP brain-computer interface for verbally disabled communication.</div>
+        <div class="v-body">
+          <p>Cerebralx was my longest and most defining chapter. I built an SSVEP brain-computer interface designed to help verbally disabled individuals communicate through thought decoding. The work spanned electronics, firmware, software, machine learning behaviour, and low-latency systems running under real constraints — not demo conditions.</p>
+          <p>But Cerebralx was not just a technical build. It was a full startup journey. I navigated early-stage fundraising, pitched to 50+ institutional investors, worked with E-Cell programs and accelerator ecosystems, and led validation with healthcare stakeholders. The Youngest Entrepreneur of the Year recognition at TiECon 2022 came during this period.</p>
+          <p>That experience gave me firsthand exposure to how founders are judged — and where that process consistently breaks down.</p>
+        </div>
+        <div class="v-outcome"><span class="v-outcome-label">Outcome</span><span>Cerebralx led directly to PerPitch. Years of being evaluated taught me more about founder evaluation than any book or framework could. The gap was real before the product existed.</span></div>
+      </div>
+    </div>
+
+    <div class="venture reveal">
+      <div>
+        <div class="v-period">2024–Present</div>
+        <div class="v-role">Founder</div>
+        <div class="v-tags">
+          <span class="v-tag">Venture infra</span>
+          <span class="v-tag">AI systems</span>
+          <span class="v-tag">Behavioral intelligence</span>
+          <span class="v-tag">Observability</span>
+          <span class="v-tag">Startup ecosystem</span>
+        </div>
+      </div>
+      <div>
+        <div class="v-title">PerPitch</div>
+        <div class="v-summary">AI-powered infrastructure for systematic founder evaluation in the venture capital ecosystem.</div>
+        <div class="v-body">
+          <p>PerPitch emerged from lived founder experience. After years of fundraising for Cerebralx, one thing became impossible to ignore: early-stage founder evaluation is still highly subjective, inconsistent, and difficult to track over time. Same pitch, different reactions — depending on mood, warm intros, and pattern-matching to prior winners.</p>
+          <p>PerPitch is building better infrastructure for that layer of the startup ecosystem — AI-powered systems for systematic founder evaluation, behavioral intelligence, and observability-style assessment for investors and accelerators. The goal isn't to replace human judgment. It's to inform it with structured data instead of gut feel, and trajectory instead of static snapshots.</p>
+        </div>
+        <div class="v-outcome"><span class="v-outcome-label">Status</span><span>Active. Discovered through lived fundraising experience, not theory. The friction became the product.</span></div>
+      </div>
+    </div>
+
+    <div class="venture reveal">
+      <div>
+        <div class="v-period">2017–2020</div>
+        <div class="v-role">Freelance Security Consultant</div>
+        <div class="v-tags">
+          <span class="v-tag">Pentest</span>
+          <span class="v-tag">Incident response</span>
+          <span class="v-tag">Security architecture</span>
+          <span class="v-tag">Risk assessment</span>
+        </div>
+      </div>
+      <div>
+        <div class="v-title">Security consulting</div>
+        <div class="v-summary">Freelance cybersecurity work across assessment, incident response, architecture, and remediation.</div>
+        <div class="v-body">
+          <p>Consulting across vulnerability assessment, penetration testing, incident response, security architecture, and operational hardening. Client-facing, pressure-tested, and hands-on across multiple sectors.</p>
+          <p>This background gave me a bias toward adversarial thinking and failure modes. That lens now shapes how I approach agent platforms, tool access, unsafe execution, and AI system design — not just what a system can do, but how it breaks.</p>
+        </div>
+        <div class="v-outcome"><span class="v-outcome-label">Legacy</span><span>Still shows up in everything I build. AI security is a direct evolution of this instinct applied to a new attack surface.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" style="padding-top:0">
+    <div class="section-rule reveal"><span class="section-rule-label">Technical builds</span><div class="section-rule-line"></div></div>
+    <div class="builds-grid reveal">
+      <div class="build-card">
+        <div class="build-status s-progress"><span class="s-dot"></span>In progress</div>
+        <div class="build-title">Offline-first personal AI agent</div>
+        <div class="build-desc">Cross-platform agent app built with Cactus SDK for iOS and Android. Offline-first assumptions and local inference constraints shape the architecture from the start — not retrofitted.</div>
+        <div class="build-insight">"Offline isn't a fallback. It's a design constraint that produces better architecture."</div>
+        <div class="build-tags"><span class="tag">Cactus SDK</span><span class="tag">iOS / Android</span><span class="tag">Local inference</span><span class="tag">Orchestration</span></div>
+      </div>
+      <div class="build-card">
+        <div class="build-status s-progress"><span class="s-dot"></span>In progress</div>
+        <div class="build-title">Multi-tool LangGraph agent</div>
+        <div class="build-desc">Orchestration-heavy agent project built around multi-step coordination and explicit control over agent behaviour. LangGraph because it forces structure — nodes, edges, state — where most agent demos avoid it.</div>
+        <div class="build-insight">"Structure isn't bureaucracy. It's the foundation for systems that can be reasoned about, not just prompted."</div>
+        <div class="build-tags"><span class="tag">LangGraph</span><span class="tag">Multi-tool</span><span class="tag">Durable flows</span><span class="tag">State machines</span></div>
+      </div>
+      <div class="build-card">
+        <div class="build-status s-done"><span class="s-dot"></span>Completed</div>
+        <div class="build-title">Local RAG pipeline</div>
+        <div class="build-desc">Practical retrieval pipeline using ChromaDB, Ollama, and LangChain — built as part of a deliberate AI engineering path. Past notebook-level familiarity, into real implementation tradeoffs.</div>
+        <div class="build-insight">Sharpened understanding of embeddings, retrieval flow, local model tradeoffs, and how to structure memory without relying on hosted black boxes.</div>
+        <div class="build-tags"><span class="tag">ChromaDB</span><span class="tag">Ollama</span><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">Local AI</span></div>
+      </div>
+      <div class="build-card">
+        <div class="build-status s-active"><span class="s-dot"></span>Ongoing research</div>
+        <div class="build-title">AI security surface mapping</div>
+        <div class="build-desc">Systematic exploration of the attack surface of AI agents: prompt injection variants, unsafe tool execution, RCE via code-running agents, RAG poisoning, and capability boundary confusion in chained multi-tool flows.</div>
+        <div class="build-insight">"The interesting question isn't whether an agent can call a tool. It's what happens when the wrong input reaches the wrong capability boundary."</div>
+        <div class="build-tags"><span class="tag">Prompt injection</span><span class="tag">Tool execution</span><span class="tag">RCE surfaces</span><span class="tag">Agent security</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-mono">Ayush Mahajan · Founder-Engineer · India</span>
+  <span class="footer-mono">Built with intent. Updated as the work evolves.</span>
+</footer>
+<script>
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){if(e.isIntersecting){setTimeout(function(){e.target.classList.add('in')},i*55);obs.unobserve(e.target)}})
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el)});
+})();
+</script>
+</body>
+</html>

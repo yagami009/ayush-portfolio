@@ -1,20 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { siteContent } from "../content";
-import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Focus", href: "#current-focus" },
-  { label: "Arc", href: "#arc" },
-  { label: "Notes", href: "#notes" },
+  { label: "Home", href: "/" },
+  { label: "Work", href: "/work" },
+  { label: "Lab", href: "/lab" },
+  { label: "Writing", href: "/writing" },
+  { label: "Now", href: "/now" },
 ];
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
-  const isHome = location === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 32);
@@ -22,207 +19,85 @@ export function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
-  }, [menuOpen]);
-
-  const handleAnchor = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
-  const navBg = scrolled || menuOpen ? "rgba(13,13,13,0.96)" : "transparent";
-  const navBorder = scrolled || menuOpen ? "1px solid var(--border)" : "1px solid transparent";
-
   return (
-    <>
-      {/* Page blur overlay */}
-      <div
-        onClick={() => setMenuOpen(false)}
-        style={{
-          position: "fixed", inset: 0, zIndex: 98,
-          backdropFilter: menuOpen ? "blur(6px)" : "blur(0px)",
-          WebkitBackdropFilter: menuOpen ? "blur(6px)" : "blur(0px)",
-          background: menuOpen ? "rgba(0,0,0,0.35)" : "rgba(0,0,0,0)",
-          opacity: menuOpen ? 1 : 0,
-          pointerEvents: menuOpen ? "all" : "none",
-          transition: "opacity 0.3s ease, backdrop-filter 0.3s ease, background 0.3s ease",
-        }}
-      />
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        background: navBg, borderBottom: navBorder,
-        backdropFilter: (scrolled || menuOpen) ? "blur(20px)" : "none",
-        transition: "background 0.3s, border-color 0.3s",
+    <nav style={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      right: 0,
+      height: "var(--nav-h)",
+      zIndex: 500,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "0 2.5rem",
+      borderBottom: "1px solid var(--border)",
+      background: "rgba(13,12,10,0.92)",
+      backdropFilter: "blur(14px)",
+    }}>
+      <Link href="/">
+        <span style={{
+          fontFamily: "var(--serif)",
+          fontSize: "0.95rem",
+          fontWeight: 300,
+          color: "var(--text)",
+          textDecoration: "none",
+          letterSpacing: "-0.01em",
+        }}>Ayush Mahajan</span>
+      </Link>
+
+      <ul style={{
+        display: "flex",
+        alignItems: "center",
+        listStyle: "none",
+        margin: 0,
+        padding: 0,
       }}>
-        <div className="page-pad" style={{
-          maxWidth: 1180, margin: "0 auto", height: 60,
-          display: "flex", alignItems: "center", justifyContent: "space-between",
-        }}>
-          <Link href="/" onClick={() => setMenuOpen(false)}>
-            <span style={{
-              fontFamily: "var(--font-head)", fontWeight: 700, fontSize: 14,
-              letterSpacing: "-0.01em", color: "var(--fg)", cursor: "pointer",
-              opacity: (scrolled || menuOpen) ? 1 : 0.9, transition: "opacity 0.2s",
-              whiteSpace: "nowrap",
-            }}>{siteContent.brand.name}</span>
-          </Link>
-
-          {/* Desktop links */}
-          <div className="nav-desktop-links">
-            {isHome ? (
-              navLinks.map(link => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  onClick={handleAnchor(link.href)}
-                  style={{
-                    fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500,
-                    color: "var(--fg3)", padding: "6px 12px", borderRadius: 6, cursor: "pointer",
-                    transition: "color 0.15s, background 0.15s",
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.color = "var(--fg)"; e.currentTarget.style.background = "var(--bg3)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = "var(--fg3)"; e.currentTarget.style.background = "transparent"; }}
-                >{link.label}</a>
-              ))
-            ) : (
-              <Link href="/">
+        {navLinks.map(link => {
+          const isActive = location === link.href || (link.href !== "/" && location.startsWith(link.href));
+          return (
+            <li key={link.label}>
+              <Link href={link.href}>
                 <span style={{
-                  fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500,
-                  color: "var(--fg3)", padding: "6px 12px", borderRadius: 6, cursor: "pointer",
-                  transition: "color 0.15s, background 0.15s",
-                }}
-                  onMouseEnter={e => { e.currentTarget.style.color = "var(--fg)"; e.currentTarget.style.background = "var(--bg3)"; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = "var(--fg3)"; e.currentTarget.style.background = "transparent"; }}
-                >Home</span>
+                  display: "block",
+                  padding: "0 1rem",
+                  fontSize: "0.72rem",
+                  fontWeight: 400,
+                  color: isActive ? "var(--text)" : "var(--muted)",
+                  textDecoration: "none",
+                  letterSpacing: "0.07em",
+                  textTransform: "uppercase",
+                  transition: "color 0.18s",
+                  lineHeight: "var(--nav-h)",
+                  borderBottom: isActive ? "2px solid var(--amber)" : "2px solid transparent",
+                }}>{link.label}</span>
               </Link>
-            )}
-            <Link href="/blog">
-              <span style={{
-                fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500,
-                color: location.startsWith("/blog") ? "var(--fg)" : "var(--fg3)",
-                padding: "6px 12px", borderRadius: 6, cursor: "pointer",
-                transition: "color 0.15s, background 0.15s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.color = "var(--fg)"; e.currentTarget.style.background = "var(--bg3)"; }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.color = location.startsWith("/blog") ? "var(--fg)" : "var(--fg3)";
-                  e.currentTarget.style.background = "transparent";
-                }}
-              >Writing</span>
-            </Link>
-            <Link href="/about">
-              <span style={{
-                fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 500,
-                color: location === "/about" ? "var(--fg)" : "var(--fg3)",
-                padding: "6px 12px", borderRadius: 6, cursor: "pointer",
-                transition: "color 0.15s, background 0.15s",
-              }}
-                onMouseEnter={e => { e.currentTarget.style.color = "var(--fg)"; e.currentTarget.style.background = "var(--bg3)"; }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.color = location === "/about" ? "var(--fg)" : "var(--fg3)";
-                  e.currentTarget.style.background = "transparent";
-                }}
-              >About</span>
-            </Link>
-            <a href={`mailto:${siteContent.links.email}`} style={{
-              marginLeft: 10, fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600,
-              color: "var(--bg)", background: "var(--accent)",
-              padding: "7px 16px", borderRadius: 6, cursor: "pointer",
-              letterSpacing: "0.01em", transition: "opacity 0.15s",
-            }}
-              onMouseEnter={e => (e.currentTarget.style.opacity = "0.85")}
-              onMouseLeave={e => (e.currentTarget.style.opacity = "1")}
-            >Contact</a>
-            <ThemeToggle />
-          </div>
-
-          {/* Hamburger button (mobile only) */}
-          <button
-            className="nav-hamburger-btn"
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-          >
-            {menuOpen ? "✕" : "☰"}
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile slide-down panel */}
-      <div className={`nav-mobile-panel${menuOpen ? " open" : ""}`}>
-        {isHome ? (
-          navLinks.map(link => (
-            <a
-              key={link.label}
-              href={link.href}
-              onClick={handleAnchor(link.href)}
-              style={{
-                fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500,
-                color: "var(--fg2)", padding: "12px 4px", borderBottom: "1px solid var(--border)",
-                cursor: "pointer", transition: "color 0.15s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "var(--fg)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--fg2)")}
-            >{link.label}</a>
-          ))
-        ) : (
-          <Link href="/">
-            <span
-              onClick={() => setMenuOpen(false)}
-              style={{
-                fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500,
-                color: "var(--fg2)", padding: "12px 4px", borderBottom: "1px solid var(--border)",
-                cursor: "pointer", transition: "color 0.15s",
-              }}
-              onMouseEnter={e => (e.currentTarget.style.color = "var(--fg)")}
-              onMouseLeave={e => (e.currentTarget.style.color = "var(--fg2)")}
-            >Home</span>
-          </Link>
-        )}
-        <Link href="/blog">
-          <span
-            onClick={() => setMenuOpen(false)}
+            </li>
+          );
+        })}
+        <li>
+          <a
+            href="mailto:mahajan.ayush9909@gmail.com"
             style={{
-              fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500,
-              color: location.startsWith("/blog") ? "var(--fg)" : "var(--fg2)",
-              padding: "12px 4px", borderBottom: "1px solid var(--border)",
-              cursor: "pointer", transition: "color 0.15s",
+              color: "var(--bg) !important",
+              background: "var(--amber)",
+              padding: "0.4rem 1rem !important",
+              borderRadius: "var(--radius)",
+              borderBottom: "none !important",
+              lineHeight: "1.4 !important",
+              fontSize: "0.72rem",
+              fontWeight: 500,
+              letterSpacing: "0.07em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              transition: "opacity 0.18s",
+              display: "inline-block",
             }}
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--fg)")}
-            onMouseLeave={e => (e.currentTarget.style.color = location.startsWith("/blog") ? "var(--fg)" : "var(--fg2)")}
-          >Writing</span>
-        </Link>
-        <Link href="/about">
-          <span
-            onClick={() => setMenuOpen(false)}
-            style={{
-              fontFamily: "var(--font-body)", fontSize: 15, fontWeight: 500,
-              color: location === "/about" ? "var(--fg)" : "var(--fg2)",
-              padding: "12px 4px", borderBottom: "1px solid var(--border)",
-              cursor: "pointer", transition: "color 0.15s",
-            }}
-            onMouseEnter={e => (e.currentTarget.style.color = "var(--fg)")}
-            onMouseLeave={e => (e.currentTarget.style.color = location === "/about" ? "var(--fg)" : "var(--fg2)")}
-          >About</span>
-        </Link>
-        <a
-          href={`mailto:${siteContent.links.email}`}
-          onClick={() => setMenuOpen(false)}
-          style={{
-            marginTop: 12, fontFamily: "var(--font-body)", fontSize: 13, fontWeight: 600,
-            color: "var(--bg)", background: "var(--accent)",
-            padding: "12px 20px", borderRadius: 7, cursor: "pointer",
-            letterSpacing: "0.01em", textAlign: "center",
-          }}
-        >Contact</a>
-        <div style={{ marginTop: 12, display: "flex", justifyContent: "center" }}>
-          <ThemeToggle />
-        </div>
-      </div>
-    </>
+            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
+            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+          >Connect</a>
+        </li>
+      </ul>
+    </nav>
   );
 }
