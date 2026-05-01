@@ -1,5 +1,44 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link } from "wouter";
+import { AgentPanel } from "../components/AgentPanel";
+import { MagneticBtn } from "../components/MagneticBtn";
+
+function useCountUp(target: number, duration = 1500, start = 0): React.RefObject<HTMLSpanElement> {
+  const ref = useRef<HTMLSpanElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || started.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          started.current = true;
+          const startTime = performance.now();
+          const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+          const step = (now: number) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            el.textContent = String(Math.round(start + (target - start) * easeOut(progress)));
+            if (progress < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [target, duration, start]);
+
+  return ref;
+}
+
+function CountNum({ value, suffix }: { value: number; suffix: string }) {
+  const ref = useCountUp(value);
+  return <span className="proof-num" ref={ref}>0{suffix}</span>;
+}
 
 export function Home() {
   useEffect(() => {
@@ -26,6 +65,7 @@ export function Home() {
     <div className="page">
       {/* Hero Section */}
       <div className="hero">
+        <div className="hero-orb" />
         <div className="container">
           <div className="hero-inner">
             <div>
@@ -39,8 +79,8 @@ export function Home() {
                 I build at the intersection of systems, intelligence, and execution. Currently: PerPitch — AI infrastructure for how early-stage founders are evaluated.
               </p>
               <div className="hero-ctas">
-                <a href="/work" className="btn btn-amber">See the work</a>
-                <a href="/now" className="btn btn-outline">What I'm building now</a>
+                <MagneticBtn><a href="/work" className="btn btn-amber">See the work</a></MagneticBtn>
+                <MagneticBtn><a href="/now" className="btn btn-outline">What I'm building now</a></MagneticBtn>
               </div>
             </div>
           </div>
@@ -51,17 +91,17 @@ export function Home() {
       <div className="proof">
         <div className="proof-grid">
           <div className="proof-cell reveal">
-            <div className="proof-num">4+</div>
+            <CountNum value={4} suffix="+" />
             <div className="proof-key">Years at Cerebralx</div>
             <div className="proof-detail">Built a BCI venture from hardware to fundraising</div>
           </div>
           <div className="proof-cell reveal">
-            <div className="proof-num">50+</div>
+            <CountNum value={50} suffix="+" />
             <div className="proof-key">Investor pitches</div>
             <div className="proof-detail">Institutional conversations during the Cerebralx years</div>
           </div>
           <div className="proof-cell reveal">
-            <div className="proof-num">2022</div>
+            <CountNum value={2022} suffix="" />
             <div className="proof-key">TiECon recognition</div>
             <div className="proof-detail">Youngest Entrepreneur of the Year · STPI Awards</div>
           </div>
@@ -71,6 +111,15 @@ export function Home() {
             <div className="proof-detail">Venture infra · local AI · agent systems · AI security</div>
           </div>
         </div>
+      </div>
+
+      {/* Agent Panel */}
+      <div className="container" style={{ paddingTop: "4rem", paddingBottom: "2rem" }}>
+        <div className="section-rule" style={{ marginBottom: "2rem" }}>
+          <span className="section-rule-label">Agentic layer</span>
+          <div className="section-rule-line"></div>
+        </div>
+        <AgentPanel compact />
       </div>
 
       {/* Featured Work */}
