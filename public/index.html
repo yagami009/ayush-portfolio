@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0d0c0a;--bg2:#131210;--bg3:#1a1814;--border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);--text:#ede9e1;--muted:#857f74;--dim:#4a4640;--amber:#e09830;--amber-bg:rgba(224,152,48,0.10);--teal:#2a9e7a;--teal-bg:rgba(42,158,122,0.10);--serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',monospace;--radius:2px;--nav-h:60px}
+:root{--bg:#0a0a0a;--bg2:#111111;--bg3:#1a1a1a;--border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);--text:#fcfcfc;--muted:#94a3b8;--dim:#475569;--accent:#4f46e5;--accent-bg:rgba(79,70,229,0.10);--teal:#2a9e7a;--teal-bg:rgba(42,158,122,0.10);--serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--mono:'DM Mono',monospace;--radius:2px;--nav-h:60px}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;min-height:100vh}
@@ -17,13 +17,13 @@ nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:500;display:
 .nav-links{display:flex;align-items:center;list-style:none}
 .nav-links li a{display:block;padding:0 1rem;font-size:0.72rem;font-weight:400;color:var(--muted);text-decoration:none;letter-spacing:0.07em;text-transform:uppercase;transition:color 0.18s;line-height:var(--nav-h);border-bottom:2px solid transparent}
 .nav-links li a:hover{color:var(--text)}
-.nav-links li a.active{color:var(--text);border-bottom-color:var(--amber)}
-.nav-cta{color:var(--bg)!important;background:var(--amber);padding:0.4rem 1rem!important;border-radius:var(--radius);border-bottom:none!important;line-height:1.4!important}
+.nav-links li a.active{color:var(--text);border-bottom-color:var(--accent)}
+.nav-cta{color:var(--bg)!important;background:var(--accent);padding:0.4rem 1rem!important;border-radius:var(--radius);border-bottom:none!important;line-height:1.4!important}
 .page{padding-top:var(--nav-h)}
 .container{max-width:1100px;margin:0 auto;padding:0 2.5rem}
 .section{padding:6rem 0}
-.eyebrow{font-family:var(--mono);font-size:0.66rem;color:var(--amber);letter-spacing:0.12em;text-transform:uppercase;display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem}
-.eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--amber);flex-shrink:0}
+.eyebrow{font-family:var(--mono);font-size:0.66rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;display:flex;align-items:center;gap:0.7rem;margin-bottom:1.5rem}
+.eyebrow::before{content:'';display:block;width:20px;height:1px;background:var(--accent);flex-shrink:0}
 .section-rule{display:flex;align-items:center;gap:1.25rem;margin-bottom:3rem}
 .section-rule-label{font-family:var(--mono);font-size:0.63rem;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;white-space:nowrap}
 .section-rule-line{flex:1;height:1px;background:var(--border)}
@@ -31,10 +31,10 @@ h1.display{font-family:var(--serif);font-size:clamp(2.8rem,5.5vw,4.8rem);font-we
 h1.display em{font-style:italic;color:var(--muted)}
 p.lead{font-size:1rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:540px}
 .btn{display:inline-block;font-family:var(--sans);font-size:0.75rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;text-decoration:none;padding:0.7rem 1.5rem;border-radius:var(--radius);transition:opacity 0.18s;cursor:pointer}
-.btn-amber{background:var(--amber);color:var(--bg)}.btn-amber:hover{opacity:0.84}
+.btn-accent{background:var(--accent);color:var(--bg)}.btn-accent:hover{opacity:0.84}
 .btn-outline{border:1px solid var(--border-hi);color:var(--muted);background:transparent}.btn-outline:hover{border-color:var(--muted);color:var(--text)}
 .tag{display:inline-block;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.07em;padding:0.18rem 0.55rem;border:1px solid var(--border);border-radius:var(--radius);color:var(--dim)}
-.tag-amber{border-color:rgba(224,152,48,0.3);color:var(--amber);background:var(--amber-bg)}
+.tag-accent{border-color:rgba(79,70,229,0.3);color:var(--accent);background:var(--accent-bg)}
 .tag-teal{border-color:rgba(42,158,122,0.3);color:var(--teal);background:var(--teal-bg)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity 0.55s ease,transform 0.55s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
@@ -46,8 +46,8 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
 /* HOME */
 .hero{padding:9rem 0 6rem;border-bottom:1px solid var(--border)}
 .hero-inner{display:grid;grid-template-columns:1fr 320px;gap:4rem;align-items:end}
-.hero-kicker{font-family:var(--mono);font-size:0.65rem;color:var(--amber);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:0.7rem;animation:fadeUp 0.5s ease 0.05s both}
-.hero-kicker::before{content:'';width:20px;height:1px;background:var(--amber)}
+.hero-kicker{font-family:var(--mono);font-size:0.65rem;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:0.7rem;animation:fadeUp 0.5s ease 0.05s both}
+.hero-kicker::before{content:'';width:20px;height:1px;background:var(--accent)}
 .hero h1{animation:fadeUp 0.6s ease 0.15s both;margin-bottom:2rem}
 .hero-sub{font-size:1rem;color:var(--muted);line-height:1.8;font-weight:300;max-width:500px;margin-bottom:2.5rem;animation:fadeUp 0.6s ease 0.25s both}
 .hero-ctas{display:flex;gap:0.9rem;align-items:center;flex-wrap:wrap;animation:fadeUp 0.6s ease 0.35s both}
@@ -57,23 +57,23 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
 .now-item{padding:0.85rem 0;border-bottom:1px solid var(--border)}
 .now-item:last-child{border-bottom:none;padding-bottom:0}
 .now-item:first-child{padding-top:0}
-.now-item-tag{font-family:var(--mono);font-size:0.58rem;color:var(--amber);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.3rem}
+.now-item-tag{font-family:var(--mono);font-size:0.58rem;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.3rem}
 .now-item-text{font-size:0.82rem;color:var(--muted);line-height:1.55;font-weight:300}
 .proof{border-bottom:1px solid var(--border)}
 .proof-grid{display:grid;grid-template-columns:repeat(4,1fr)}
 .proof-cell{padding:2.5rem;border-right:1px solid var(--border)}
 .proof-cell:last-child{border-right:none}
 .proof-num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--text);line-height:1;margin-bottom:0.5rem}
-.proof-key{font-family:var(--mono);font-size:0.6rem;color:var(--amber);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.35rem}
+.proof-key{font-family:var(--mono);font-size:0.6rem;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.35rem}
 .proof-detail{font-size:0.78rem;color:var(--dim);line-height:1.5}
 .featured-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border)}
 .feat-card{background:var(--bg);padding:2.25rem;position:relative;text-decoration:none;display:block;transition:background 0.2s;cursor:pointer}
 .feat-card:hover{background:var(--bg3)}
 .feat-card.wide{grid-column:span 2}
 .feat-arrow{position:absolute;top:2rem;right:2rem;font-size:0.85rem;color:var(--dim);transition:transform 0.18s,color 0.18s}
-.feat-card:hover .feat-arrow{transform:translate(3px,-3px);color:var(--amber)}
+.feat-card:hover .feat-arrow{transform:translate(3px,-3px);color:var(--accent)}
 .feat-period{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.9rem;display:flex;align-items:center;gap:0.5rem}
-.feat-dot{width:5px;height:5px;border-radius:50%;background:var(--amber)}
+.feat-dot{width:5px;height:5px;border-radius:50%;background:var(--accent)}
 .feat-dot.teal{background:var(--teal)}
 .feat-title{font-family:var(--serif);font-size:1.4rem;font-weight:300;line-height:1.2;letter-spacing:-0.01em;color:var(--text);margin-bottom:0.7rem}
 .feat-desc{font-size:0.83rem;color:var(--muted);line-height:1.7;font-weight:300;margin-bottom:1.25rem}
@@ -89,7 +89,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
 .pl-label{font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem}
 .pl-title{font-family:var(--serif);font-size:1.1rem;font-weight:300;color:var(--text);line-height:1.3;flex:1}
 .pl-arrow{font-size:0.8rem;color:var(--dim);margin-top:1.25rem;transition:transform 0.18s,color 0.18s}
-.page-link:hover .pl-arrow{transform:translate(3px,-3px);color:var(--amber)}
+.page-link:hover .pl-arrow{transform:translate(3px,-3px);color:var(--accent)}
 @media(max-width:860px){
   .hero-inner{grid-template-columns:1fr}
   .hero-side{display:none}
@@ -125,7 +125,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
         <h1 class="display">From neural interfaces<br>to venture infrastructure<br>to <em>agentic systems.</em></h1>
         <p class="hero-sub">I build at the intersection of systems, intelligence, and execution. Currently: PerPitch — AI infrastructure for how early-stage founders are evaluated.</p>
         <div class="hero-ctas">
-          <a href="work.html" class="btn btn-amber">See the work</a>
+          <a href="work.html" class="btn btn-accent">See the work</a>
           <a href="now.html" class="btn btn-outline">What I'm building now</a>
         </div>
       </div>
@@ -163,7 +163,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
     <div class="section-rule reveal">
       <span class="section-rule-label">Featured work</span>
       <div class="section-rule-line"></div>
-      <a href="work.html" style="font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:color 0.2s" onmouseover="this.style.color='var(--amber)'" onmouseout="this.style.color='var(--dim)'">All work ↗</a>
+      <a href="work.html" style="font-family:var(--mono);font-size:0.6rem;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;white-space:nowrap;transition:color 0.2s" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--dim)'">All work ↗</a>
     </div>
     <div class="featured-grid reveal">
       <div class="feat-card wide" onclick="location.href='work.html'">
@@ -171,7 +171,7 @@ footer{border-top:1px solid var(--border);padding:2rem 2.5rem;display:flex;align
         <div class="feat-period"><span class="feat-dot"></span>Hardtech · BCI · 2019–2024</div>
         <div class="feat-title">Cerebralx — brain-computer interface for verbal disability</div>
         <div class="feat-desc">Nearly five years building an LLM-powered SSVEP BCI — electronics, firmware, software, real-time ML. Also a full startup: fundraising, 50+ investor pitches, accelerators, healthcare validation. Defined everything that came after.</div>
-        <div class="feat-tags"><span class="tag">SSVEP</span><span class="tag">Embedded</span><span class="tag">Real-time ML</span><span class="tag">Fundraising</span><span class="tag tag-amber">Founder</span></div>
+        <div class="feat-tags"><span class="tag">SSVEP</span><span class="tag">Embedded</span><span class="tag">Real-time ML</span><span class="tag">Fundraising</span><span class="tag tag-accent">Founder</span></div>
       </div>
       <div class="feat-card" onclick="location.href='work.html'">
         <span class="feat-arrow">↗</span>
