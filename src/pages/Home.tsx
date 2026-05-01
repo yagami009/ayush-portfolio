@@ -43,28 +43,6 @@ export function Home() {
                 <a href="/now" className="btn btn-outline">What I'm building now</a>
               </div>
             </div>
-            <div className="hero-side">
-              <div className="side-label">
-                <span className="pulse-dot"></span>
-                Active right now
-              </div>
-              <div className="now-item">
-                <div className="now-item-tag">Venture</div>
-                <div className="now-item-text">PerPitch — AI-powered founder evaluation infrastructure for investors and accelerators.</div>
-              </div>
-              <div className="now-item">
-                <div className="now-item-tag">Build</div>
-                <div className="now-item-text">Offline-first AI agent app using Cactus SDK — iOS and Android, local inference first.</div>
-              </div>
-              <div className="now-item">
-                <div className="now-item-tag">Research</div>
-                <div className="now-item-text">AI security: prompt injection, unsafe tool execution, RCE surfaces in agent platforms.</div>
-              </div>
-              <div className="now-item">
-                <div className="now-item-tag">Systems</div>
-                <div className="now-item-text">Multi-tool LangGraph agent — orchestration-heavy, structure-first.</div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
