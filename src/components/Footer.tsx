@@ -6,7 +6,11 @@ export function Footer() {
   useEffect(() => {
     const update = () => {
       const now = new Date();
-      setTime(now.toUTCString().slice(17, 25));
+      const ist = new Date(now.getTime() + (5 * 60 + 30) * 60 * 1000);
+      const h = String(ist.getUTCHours()).padStart(2, "0");
+      const m = String(ist.getUTCMinutes()).padStart(2, "0");
+      const s = String(ist.getUTCSeconds()).padStart(2, "0");
+      setTime(`${h}:${m}:${s}`);
     };
     update();
     const id = setInterval(update, 1000);
