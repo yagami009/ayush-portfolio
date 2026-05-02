@@ -749,7 +749,7 @@ nav {
   border: none;
   cursor: pointer;
   padding: 8px;
-  z-index: 600;
+  z-index: 10000;
 }
 .ham-line {
   display: block;
@@ -766,7 +766,7 @@ nav {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.7);
-  z-index: 550;
+  z-index: 9998;
   backdrop-filter: blur(4px);
 }
 .nav-mobile {
@@ -781,7 +781,7 @@ nav {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
-  z-index: 600;
+  z-index: 9999;
 }
 .nav-mobile-close {
   position: absolute;
