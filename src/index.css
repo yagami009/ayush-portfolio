@@ -271,7 +271,14 @@ nav {
   padding: 0 2.5rem;
   border-bottom: 1px solid var(--border);
   background: rgba(13,12,10,0.92);
+}
+nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: -1;
 }
 
 .nav-progress {
@@ -782,6 +789,7 @@ nav {
   flex-direction: column;
   gap: 0.25rem;
   z-index: 10002;
+  overflow-y: auto;
 }
 .nav-mobile-close {
   position: absolute;

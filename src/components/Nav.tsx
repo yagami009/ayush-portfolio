@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
 import { Link, useLocation } from "wouter";
 
 const navLinks = [
@@ -76,7 +75,7 @@ export function Nav() {
         <span className={`ham-line ${mobileOpen ? "open" : ""}`} />
       </button>
 
-      {mobileOpen && createPortal(
+      {mobileOpen && (
         <div className="nav-mobile-overlay" onClick={() => setMobileOpen(false)}>
           <div className="nav-mobile" onClick={e => e.stopPropagation()}>
             <button className="nav-mobile-close" onClick={() => setMobileOpen(false)}>×</button>
@@ -92,8 +91,7 @@ export function Nav() {
               Connect
             </a>
           </div>
-        </div>,
-        document.body
+        </div>
       )}
     </nav>
   );
