@@ -768,6 +768,7 @@ nav::before {
 .ham-line.open:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .ham-line.open:nth-child(2) { opacity: 0; }
 .ham-line.open:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.nav-hamburger.open { visibility: hidden; }
 
 .nav-mobile-overlay {
   position: fixed;

@@ -65,7 +65,7 @@ export function Nav() {
       </ul>
 
       <button
-        className="nav-hamburger"
+        className={`nav-hamburger${mobileOpen ? " open" : ""}`}
         onClick={() => setMobileOpen(o => !o)}
         aria-label="Toggle menu"
         aria-expanded={mobileOpen}
