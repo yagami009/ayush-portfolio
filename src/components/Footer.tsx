@@ -41,7 +41,7 @@ export function Footer() {
           fontSize: "0.62rem",
           color: "var(--teal)",
           letterSpacing: "0.06em",
-        }}>UTC {time}</span>
+        }}>IST {time}</span>
       )}
     </footer>
   );
