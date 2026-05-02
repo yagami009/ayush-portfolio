@@ -7,8 +7,8 @@
   --border: rgba(255,255,255,0.06);
   --border-hi: rgba(255,255,255,0.12);
   --text: #ede9e1;
-  --muted: #857f74;
-  --dim: #4a4640;
+  --muted: #9a9488;
+  --dim: #6a6560;
   --amber: #e09830;
   --amber-bg: rgba(224,152,48,0.10);
   --teal: #2a9e7a;
@@ -731,12 +731,35 @@ nav {
   .op-meta { grid-template-columns: repeat(2, 1fr); }
   .notes-grid { grid-template-columns: 1fr; }
   .stack-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .proof-grid { grid-template-columns: repeat(2, 1fr); }
+  .proof-cell:nth-child(2) { border-right: none; }
+  .featured-grid { grid-template-columns: 1fr; }
+  .feat-card.wide { grid-column: span 1; }
+  .page-links { grid-template-columns: repeat(2, 1fr); }
+  .hero { padding: 7rem 0 4rem; }
+  .hero-inner { max-width: 100%; }
+  .hero-orb { width: 280px; height: 280px; }
 }
 
 @media (max-width: 760px) {
   .venture { grid-template-columns: 1fr; gap: 1.5rem; }
   .v-tags { flex-direction: row; flex-wrap: wrap; }
   .builds-grid { grid-template-columns: 1fr; }
+  nav { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .container { padding: 0 1.25rem; }
+  .hero { padding: 6rem 0 3.5rem; }
+  .hero h1 { font-size: 2rem; }
+  .hero-sub { font-size: 0.9rem; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  .hero-ctas .btn { width: 100%; text-align: center; }
+  .section { padding: 4rem 0; }
+  .feat-card { padding: 1.5rem; }
+  .feat-title { font-size: 1.15rem; }
+  .feat-desc { font-size: 0.8rem; }
+  .page-links { grid-template-columns: 1fr; }
+  .section-rule { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .section-rule-line { width: 100%; }
 }
 
 @media (max-width: 700px) {
@@ -747,4 +770,10 @@ nav {
   .post-date { display: none; }
   .post-full-body { margin-left: 0; }
   .post-full { margin: 0 -1.5rem; padding: 1.5rem; }
+  .arc-row { grid-template-columns: 1fr; gap: 0.5rem; }
+  .proof-grid { grid-template-columns: 1fr 1fr; }
+  .proof-cell { padding: 1.5rem; }
+  .proof-num { font-size: 1.75rem; }
+  .op-grid { grid-template-columns: 1fr; }
+  .op-meta { grid-template-columns: repeat(2, 1fr); }
 }
