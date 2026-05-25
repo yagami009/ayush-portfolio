@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion Lab — Ayush Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0c0a;
+      --bg2: #131210;
+      --bg3: #1a1814;
+      --border: rgba(255,255,255,0.06);
+      --text: #ede9e1;
+      --muted: #9a9488;
+      --dim: #6a6560;
+      --amber: #e09830;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 4rem;
+    }
+    
+    .lab-header {
+      position: sticky;
+      top: 0;
+      background: rgba(13,12,10,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+    }
+    
+    .lab-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+    
+    .lab-subtitle {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+    
+    .section {
+      padding: 3rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    /* Timing Showcase */
+    .timing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .timing-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      background: var(--bg2);
+    }
+    
+    .timing-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--amber);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    
+    .timing-demo {
+      height: 60px;
+      background: var(--bg3);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 1rem;
+      overflow: hidden;
+    }
+    
+    .timing-block {
+      width: 30px;
+      height: 30px;
+      background: var(--amber);
+      border-radius: 2px;
+    }
+    
+    .timing-value {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      margin-top: 0.75rem;
+    }
+    
+    /* Animation Classes */
+    .ease-linear { animation-timing-function: linear; }
+    .ease-ease { animation-timing-function: ease; }
+    .ease-out { animation-timing-function: ease-out; }
+    .ease-smooth { animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1); }
+    
+    .duration-fast { animation-duration: 0.18s; }
+    .duration-medium { animation-duration: 0.55s; }
+    .duration-slow { animation-duration: 0.65s; }
+    
+    @keyframes slideRight {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(100px); }
+      100% { transform: translateX(0); }
+    }
+    
+    .anim-slide {
+      animation: slideRight 2s infinite;
+    }
+    
+    /* Scroll Reveal Demo */
+    .reveal-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .reveal-item {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s var(--ease-smooth);
+    }
+    
+    .reveal-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .reveal-item:nth-child(1) { transition-delay: 0s; }
+    .reveal-item:nth-child(2) { transition-delay: 0.1s; }
+    .reveal-item:nth-child(3) { transition-delay: 0.2s; }
+    .reveal-item:nth-child(4) { transition-delay: 0.3s; }
+    
+    /* Button Interactions */
+    .btn-demo-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2px;
+      cursor: pointer;
+      border: none;
+      background: var(--amber);
+      color: var(--bg);
+    }
+    
+    .btn-hover-scale { transition: transform 0.18s ease; }
+    .btn-hover-scale:hover { transform: scale(1.05); }
+    
+    .btn-hover-lift { transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .btn-hover-lift:hover { 
+      transform: translateY(-2px); 
+      box-shadow: 0 4px 12px rgba(224,152,48,0.3);
+    }
+    
+    .btn-hover-glow { transition: box-shadow 0.18s ease; }
+    .btn-hover-glow:hover { 
+      box-shadow: 0 0 20px rgba(224,152,48,0.4);
+    }
+    
+    /* Card Hover States */
+    .card-demo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .hover-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hover-card.bg-shift { transition: background 0.2s; }
+    .hover-card.bg-shift:hover { background: var(--bg3); }
+    
+    .hover-card.border-glow { transition: border-color 0.18s; }
+    .hover-card.border-glow:hover { border-color: var(--amber); }
+    
+    .hover-card .arrow {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      transition: transform 0.18s;
+    }
+    .hover-card:hover .arrow { transform: translate(3px, -3px); }
+    
+    .card-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+    
+    .card-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    
+    /* Play Controls */
+    .controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .control-btn {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    
+    .control-btn:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+    
+    .control-btn.active {
+      background: var(--amber);
+      border-color: var(--amber);
+      color: var(--bg);
+    }
+    
+    /* Timing Spec Table */
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+    }
+    
+    .spec-table th,
+    .spec-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .spec-table th {
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      font-weight: 400;
+    }
+    
+    .spec-table td { color: var(--muted); }
+    .spec-table td:first-child { color: var(--text); }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card-demo-grid,
+      .timing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="lab-header">
+    <h1 class="lab-title">Motion Lab</h1>
+    <p class="lab-subtitle">Animation timings, easings, and interaction patterns</p>
+  </header>
+
+  <section class="section">
+    <h2 class="section-title">Timing Reference</h2>
+    <table class="spec-table">
+      <thead>
+        <tr>
+          <th>Use Case</th>
+          <th>Duration</th>
+          <th>Easing</th>
+          <th>CSS Variable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hover states</td>
+          <td>0.18s</td>
+          <td>ease</td>
+          <td>n/a</td>
+        </tr>
+        <tr>
+          <td>Content reveals</td>
+          <td>0.55s</td>
+          <td>ease</td>
+          <td>n/a</td>
+        </tr>
+        <tr>
+          <td>Hero entrance</td>
+          <td>0.65s</td>
+          <td>cubic-bezier(0.16, 1, 0.3, 1)</td>
+          <td>--ease-smooth</td>
+        </tr>
+        <tr>
+          <td>Stagger children</td>
+          <td>0.55s + 0.1s delay</td>
+          <td>cubic-bezier(0.16, 1, 0.3, 1)</td>
+          <td>--ease-smooth</td>
+        </tr>
+        <tr>
+          <td>Page transitions</td>
+          <td>0.3s</td>
+          <td>ease-out</td>
+          <td>n/a</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Button Interactions</h2>
+    
+    <div class="btn-demo-grid">
+      <div>
+        <button class="btn btn-hover-scale">Scale on Hover</button>
+        <p style="margin-top: 1rem; font-family: var(--mono); font-size: 0.6rem; color: var(--dim);">transform: scale(1.05)</p>
+      </div>
+      
+      <div>
+        <button class="btn btn-hover-lift">Lift & Shadow</button>
+        <p style="margin-top: 1rem; font-family: var(--mono); font-size: 0.6rem; color: var(--dim);">transform: translateY(-2px)</p>
+      </div>
+      
+      <div>
+        <button class="btn btn-hover-glow">Glow Effect</button>
+        <p style="margin-top: 1rem; font-family: var(--mono); font-size: 0.6rem; color: var(--dim);">box-shadow glow</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Card Hover States</h2>
+    
+    <div class="card-demo-grid">
+      <div class="hover-card bg-shift">
+        <div class="card-title">Background Shift</div>
+        <div class="card-desc">Subtle background color change on hover. Good for lists.</div>
+      </div>
+      
+      <div class="hover-card border-glow">
+        <div class="card-title">Border Glow</div>
+        <div class="card-desc">Border color highlights on hover. Emphasizes selection.</div>
+      </div>
+      
+      <div class="hover-card">
+        <span class="arrow">↗</span>
+        <div class="card-title">Arrow Shift</div>
+        <div class="card-desc">Diagonal arrow movement signals external link.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2 class="section-title">Scroll Reveal Demo</h2>
+    
+    <div class="controls">
+      <button class="control-btn" onclick="triggerReveal()">Trigger Reveal</button>
+      <button class="control-btn" onclick="resetReveal()">Reset</button>
+    </div>
+    
+    <div class="reveal-container">
+      <div class="reveal-item">
+        <div style="font-family: var(--serif); font-size: 1rem; margin-bottom: 0.5rem;">Cerebralx</div>
+        <div style="font-size: 0.8rem; color: var(--muted);">Timeline reveals with staggered delays create natural flow</div>
+      </div>
+      
+      <div class="reveal-item">
+        <div style="font-family: var(--serif); font-size: 1rem; margin-bottom: 0.5rem;">PerPitch</div>
+        <div style="font-size: 0.8rem; color: var(--muted);">Each item animates 0.1s after the previous</div>
+      </div>
+      
+      <div class="reveal-item">
+        <div style="font-family: var(--serif); font-size: 1rem; margin-bottom: 0.5rem;">Cactus SDK</div>
+        <div style="font-size: 0.8rem; color: var(--muted);">cubic-bezier(0.16, 1, 0.3, 1) for smooth deceleration</div>
+      </div>
+      
+      <div class="reveal-item">
+        <div style="font-family: var(--serif); font-size: 1rem; margin-bottom: 0.5rem;">Local RAG</div>
+        <div style="font-size: 0.8rem; color: var(--muted);">TranslateY from 20px to 0 with opacity fade</div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function triggerReveal() {
+      document.querySelectorAll('.reveal-item').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 100);
+      });
+    }
+    
+    function resetReveal() {
+      document.querySelectorAll('.reveal-item').forEach(el => {
+        el.classList.remove('visible');
+      });
+    }
+    
+    // Auto-trigger on load
+    setTimeout(triggerReveal, 500);
+  </script>
+</body>
+</html>

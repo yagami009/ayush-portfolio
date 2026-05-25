@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { SEO } from "../components/SEO";
 
 export function Work() {
   useEffect(() => {
@@ -23,6 +24,11 @@ export function Work() {
 
   return (
     <div className="page">
+      <SEO
+        title="Work"
+        description="CallPilot (live voice AI voicemail), AI-Swaraj (129M MoE+MLA sovereign model), AgentCommerce (ERC-8183 escrow protocol), and AI security research — technical builds by Ayush Mahajan."
+        path="/work"
+      />
       <div className="page-hero">
         <div className="container">
           <div className="eyebrow">Work</div>
@@ -129,49 +135,49 @@ export function Work() {
           </div>
           <div className="builds-grid reveal">
             <div className="build-card">
-              <div className="build-status s-progress">
+              <div className="build-status s-active">
                 <span className="s-dot"></span>
-                In progress
+                Live · 34 calls tested
               </div>
-              <div className="build-title">Offline-first personal AI agent</div>
-              <div className="build-desc">Cross-platform agent app built with Cactus SDK for iOS and Android. Offline-first assumptions and local inference constraints shape the architecture from the start — not retrofitted.</div>
-              <div className="build-insight">"Offline isn't a fallback. It's a design constraint that produces better architecture."</div>
+              <div className="build-title">CallPilot — AI voicemail with intelligent escalation</div>
+              <div className="build-desc">Real-time AI answers missed calls, captures who called and why in 25-40 seconds. Detects VIP callers and emergency keywords, escalates urgent calls via conference bridge, sends structured WhatsApp notifications within 60 seconds.</div>
+              <div className="build-insight">"Professionals miss 40% of calls during deep work. Existing voicemail gives raw transcripts with no context. CallPilot provides structured intent."</div>
               <div className="build-tags">
-                <span className="tag">Cactus SDK</span>
-                <span className="tag">iOS / Android</span>
-                <span className="tag">Local inference</span>
-                <span className="tag">Orchestration</span>
+                <span className="tag">Twilio</span>
+                <span className="tag">Deepgram Aura</span>
+                <span className="tag">Claude</span>
+                <span className="tag">Pipecat</span>
+                <span className="tag">WhatsApp</span>
               </div>
             </div>
             <div className="build-card">
-              <div className="build-status s-progress">
+              <div className="build-status s-active">
                 <span className="s-dot"></span>
-                In progress
+                Phase 2 complete
               </div>
-              <div className="build-title">Multi-tool LangGraph agent</div>
-              <div className="build-desc">Orchestration-heavy agent project built around multi-step coordination and explicit control over agent behaviour. LangGraph because it forces structure — nodes, edges, state — where most agent demos avoid it.</div>
-              <div className="build-insight">"Structure isn't bureaucracy. It's the foundation for systems that can be reasoned about, not just prompted."</div>
+              <div className="build-title">AI-Swaraj — 129M MoE+MLA model from scratch</div>
+              <div className="build-desc">Offline-first AI toolkit for Indian context. TinyMoE (129M params, 16 routed + 1 shared expert, MLA) trained on TinyStories — loss 4.82 → 2.17. Runs on phone, Pi, or MacBook without cloud.</div>
+              <div className="build-insight">"Indian professionals can't rely on cloud AI. Power cuts, connectivity, privacy, and recurring costs are design inputs, not obstacles."</div>
               <div className="build-tags">
-                <span className="tag">LangGraph</span>
-                <span className="tag">Multi-tool</span>
-                <span className="tag">Durable flows</span>
-                <span className="tag">State machines</span>
+                <span className="tag">PyTorch</span>
+                <span className="tag">MoE+MLA</span>
+                <span className="tag">Offline-first</span>
+                <span className="tag">87.7% health eval</span>
               </div>
             </div>
             <div className="build-card">
-              <div className="build-status s-done">
+              <div className="build-status s-active">
                 <span className="s-dot"></span>
-                Completed
+                67 tests passing
               </div>
-              <div className="build-title">Local RAG pipeline</div>
-              <div className="build-desc">Practical retrieval pipeline using ChromaDB, Ollama, and LangChain — built as part of a deliberate AI engineering path. Past notebook-level familiarity, into real implementation tradeoffs.</div>
-              <div className="build-insight">Sharpened understanding of embeddings, retrieval flow, local model tradeoffs, and how to structure memory without relying on hosted black boxes.</div>
+              <div className="build-title">AgentCommerce — on-chain escrow for agent labor</div>
+              <div className="build-desc">ERC-8183-aligned smart contracts where AI agents post bounties, humans deliver work, and payments release automatically. Transparent, programmable trust without platform risk. 12 contract functions, OpenZeppelin v5.6.</div>
+              <div className="build-insight">"AI agents need to commission human work, but centralized platforms hold funds in black-box escrow. AgentCommerce provides transparent trust without platform risk."</div>
               <div className="build-tags">
-                <span className="tag">ChromaDB</span>
-                <span className="tag">Ollama</span>
-                <span className="tag">LangChain</span>
-                <span className="tag">RAG</span>
-                <span className="tag">Local AI</span>
+                <span className="tag">Solidity</span>
+                <span className="tag">Foundry</span>
+                <span className="tag">OpenZeppelin v5.6</span>
+                <span className="tag">Base L2</span>
               </div>
             </div>
             <div className="build-card">

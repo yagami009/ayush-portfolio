@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { SEO } from "../components/SEO";
 
 export function Lab() {
   useEffect(() => {
@@ -23,6 +24,11 @@ export function Lab() {
 
   return (
     <div className="page">
+      <SEO
+        title="Lab"
+        description="Current experiments and focus areas — CallPilot voice AI, AI-Swaraj sovereign models, AgentCommerce on-chain escrow, AI security research, and local inference. By Ayush Mahajan."
+        path="/lab"
+      />
       <div className="page-hero">
         <div className="container">
           <div className="eyebrow">Lab</div>
@@ -40,38 +46,38 @@ export function Lab() {
             <div className="section-rule-line"></div>
           </div>
           <p className="body-sm reveal" style={{ maxWidth: "560px", marginBottom: "2.5rem" }}>
-            My current work is concentrated on the layer where AI becomes operational — not demos, but systems that survive reality.
+            My current work is concentrated on building systems where AI meets real-world constraints — voice, sovereignty, commerce, and security.
           </p>
           <div className="focus-grid reveal">
             <div className="focus-cell">
               <div className="fc-num">01</div>
-              <div className="fc-title">Agentic systems &amp; orchestration</div>
-              <div className="fc-desc">Designing systems that can plan, coordinate tools, and operate with durable structure instead of prompt spaghetti. LangGraph, state machines, explicit memory layers.</div>
+              <div className="fc-title">CallPilot — Voice AI</div>
+              <div className="fc-desc">Real-time AI voicemail with intelligent escalation. Captures who called, why, and urgency in 25-40 seconds — sends structured WhatsApp card within 60 seconds.</div>
             </div>
             <div className="focus-cell">
               <div className="fc-num">02</div>
+              <div className="fc-title">AI-Swaraj — Sovereign AI</div>
+              <div className="fc-desc">129M MoE+MLA model built from scratch. Offline-first for Indian context — runs on phone, Pi, or MacBook. Constraint-native design: power cuts, connectivity, privacy.</div>
+            </div>
+            <div className="focus-cell">
+              <div className="fc-num">03</div>
+              <div className="fc-title">AgentCommerce — On-chain trust</div>
+              <div className="fc-desc">ERC-8183-aligned escrow protocol for AI-agent labor markets. Transparent, programmable trust for agent-to-human work. Base L2, 67 tests passing.</div>
+            </div>
+            <div className="focus-cell">
+              <div className="fc-num">04</div>
               <div className="fc-title">AI security</div>
               <div className="fc-desc">Prompt injection, unsafe tool execution, RCE surfaces, RAG poisoning, and the hidden attack surface of agent platforms. Background in security makes this a natural convergence point.</div>
             </div>
             <div className="focus-cell">
-              <div className="fc-num">03</div>
+              <div className="fc-num">05</div>
               <div className="fc-title">On-device &amp; local inference</div>
               <div className="fc-desc">Exploring what becomes possible when intelligence runs under tighter resource constraints and stronger privacy assumptions. Not just smaller models — better architecture.</div>
             </div>
             <div className="focus-cell">
-              <div className="fc-num">04</div>
-              <div className="fc-title">Execution-first AI architecture</div>
-              <div className="fc-desc">Structure, state, memory, and control surfaces matter more than clever prompts as systems grow serious. Building for debuggability and reliability, not just demos.</div>
-            </div>
-            <div className="focus-cell">
-              <div className="fc-num">05</div>
-              <div className="fc-title">Venture infrastructure</div>
-              <div className="fc-desc">PerPitch: behavioral intelligence and systematic evaluation tooling for the startup ecosystem. A product built from lived founder experience, not theory.</div>
-            </div>
-            <div className="focus-cell">
               <div className="fc-num">06</div>
-              <div className="fc-title">Mobile AI &amp; offline-first</div>
-              <div className="fc-desc">Building the offline-first agent app with Cactus SDK. The constraint is the feature: network availability shouldn't determine what your AI can do.</div>
+              <div className="fc-title">Agentic systems &amp; orchestration</div>
+              <div className="fc-desc">Designing systems that can plan, coordinate tools, and operate with durable structure instead of prompt spaghetti. State machines, explicit memory, control surfaces.</div>
             </div>
           </div>
         </div>
@@ -92,7 +98,7 @@ export function Lab() {
                 <span className="op-dot"></span>
                 <span className="op-status-text">Active</span>
               </div>
-              <div className="op-detail">AI security, venture infrastructure, agent platforms, local inference constraints, system architecture.</div>
+              <div className="op-detail">Voice AI (CallPilot), sovereign AI stacks (AI-Swaraj), on-chain escrow (AgentCommerce), agent platforms, local inference constraints, system architecture.</div>
             </div>
             <div className="op-cell">
               <div className="op-unit">Archive</div>
@@ -108,7 +114,7 @@ export function Lab() {
                 <span className="op-dot amber"></span>
                 <span className="op-status-text">In motion</span>
               </div>
-              <div className="op-detail">Agent tooling, founder-evaluation infrastructure, mobile AI flows, and local-first systems.</div>
+              <div className="op-detail">CallPilot, AI-Swaraj, AgentCommerce, founder-evaluation infrastructure, mobile AI flows, and local-first systems.</div>
             </div>
             <div className="op-cell">
               <div className="op-unit">Publish</div>
@@ -122,7 +128,7 @@ export function Lab() {
           <div className="op-meta reveal">
             <div className="op-meta-cell">Mode: <span>Systems-first</span></div>
             <div className="op-meta-cell">Bias: <span>Execution over posture</span></div>
-            <div className="op-meta-cell">Terrain: <span>Venture infra + local AI</span></div>
+            <div className="op-meta-cell">Terrain: <span>Voice + Sovereign AI + Commerce</span></div>
             <div className="op-meta-cell">Rhythm: <span>Ongoing</span></div>
           </div>
         </div>
@@ -138,14 +144,19 @@ export function Lab() {
           </p>
           <div className="notes-grid reveal">
             <div className="note-card">
-              <div className="note-meta">Apr 2026</div>
-              <div className="note-headline">The offline-first constraint is the feature.</div>
-              <div className="note-body">Building the Cactus SDK agent app taught me that offline isn't a fallback — it's a design constraint that produces better architecture. Network availability shouldn't determine feature set.</div>
+              <div className="note-meta">May 2026</div>
+              <div className="note-headline">25 seconds to understand a missed call.</div>
+              <div className="note-body">CallPilot showed me that voice AI isn't a prompt problem — it's a latency budget problem. You have 25 seconds of ring time, then 35 seconds to classify intent and escalate. Every millisecond of TTS latency eats into comprehension time.</div>
             </div>
             <div className="note-card">
-              <div className="note-meta">Mar 2026</div>
-              <div className="note-headline">Local is not free.</div>
-              <div className="note-body">On-device and local inference sound clean in theory. In practice, memory pressure, orchestration overhead, and model behaviour force sharper architectural choices than cloud demos ever reveal.</div>
+              <div className="note-meta">Apr 2026</div>
+              <div className="note-headline">The offline-first constraint is the feature.</div>
+              <div className="note-body">Building AI-Swaraj taught me that offline isn't a fallback — it's a design constraint that produces better architecture. Power cuts, connectivity, privacy — these are inputs, not obstacles.</div>
+            </div>
+            <div className="note-card">
+              <div className="note-meta">Apr 2026</div>
+              <div className="note-headline">{"Programmable trust > platform trust."}</div>
+              <div className="note-body">AgentCommerce started from a simple question: when an AI agent needs to pay a human, why trust a platform's escrow? Smart contracts make trust transparent and verifiable by default.</div>
             </div>
             <div className="note-card">
               <div className="note-meta">Mar 2026</div>
@@ -156,11 +167,6 @@ export function Lab() {
               <div className="note-meta">Mar 2026</div>
               <div className="note-headline">Structure beats prompt cleverness.</div>
               <div className="note-body">The more serious the system gets, the less impressive pure prompting feels. Durable workflows, state, memory, and control surfaces start to matter more.</div>
-            </div>
-            <div className="note-card">
-              <div className="note-meta">Mar 2026</div>
-              <div className="note-headline">From being evaluated to building the evaluator.</div>
-              <div className="note-body">Fundraising for years changes the way you see startup infrastructure. PerPitch came from that shift: moving from founder-side friction to system design for the ecosystem itself.</div>
             </div>
             <div className="note-card">
               <div className="note-meta">Ongoing</div>
@@ -177,6 +183,33 @@ export function Lab() {
             <div className="section-rule-line"></div>
           </div>
           <div className="reveal">
+            <div className="stack-row">
+              <div className="stack-cat">Voice AI</div>
+              <div className="stack-items">
+                <span className="tag">Twilio</span>
+                <span className="tag">Deepgram</span>
+                <span className="tag">Pipecat</span>
+                <span className="tag">Claude</span>
+              </div>
+            </div>
+            <div className="stack-row">
+              <div className="stack-cat">Sovereign AI</div>
+              <div className="stack-items">
+                <span className="tag">PyTorch</span>
+                <span className="tag">MoE+MLA</span>
+                <span className="tag">GGUF / Quantized</span>
+                <span className="tag">Cactus SDK</span>
+              </div>
+            </div>
+            <div className="stack-row">
+              <div className="stack-cat">On-chain</div>
+              <div className="stack-items">
+                <span className="tag">Solidity</span>
+                <span className="tag">Foundry</span>
+                <span className="tag">OpenZeppelin</span>
+                <span className="tag">Base L2</span>
+              </div>
+            </div>
             <div className="stack-row">
               <div className="stack-cat">Orchestration</div>
               <div className="stack-items">

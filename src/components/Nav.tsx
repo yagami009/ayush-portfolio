@@ -58,7 +58,7 @@ export function Nav() {
           );
         })}
         <li>
-          <a href="mailto:mahajan.ayush9909@gmail.com" className="nav-cta">
+          <a href="/now#contact" className="nav-cta">
             Connect
           </a>
         </li>
@@ -87,7 +87,7 @@ export function Nav() {
                 </Link>
               );
             })}
-            <a href="mailto:mahajan.ayush9909@gmail.com" className="nav-mobile-cta">
+            <a href="/now#contact" className="nav-mobile-cta">
               Connect
             </a>
           </div>

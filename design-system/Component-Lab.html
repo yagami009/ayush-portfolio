@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayush Portfolio — Design System Lab</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Colors */
+      --bg: #0d0c0a;
+      --bg2: #131210;
+      --bg3: #1a1814;
+      --border: rgba(255,255,255,0.06);
+      --border-hi: rgba(255,255,255,0.12);
+      --text: #ede9e1;
+      --muted: #9a9488;
+      --dim: #6a6560;
+      --amber: #e09830;
+      --amber-bg: rgba(224,152,48,0.10);
+      --teal: #2a9e7a;
+      --teal-bg: rgba(42,158,122,0.10);
+      --accent: var(--amber);
+      --accent-bg: var(--amber-bg);
+      
+      /* Typography */
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+      
+      /* Spacing */
+      --radius: 2px;
+      --nav-h: 60px;
+      
+      /* Motion */
+      --ease-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+      --duration-fast: 0.18s;
+      --duration-medium: 0.55s;
+      --duration-slow: 0.65s;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      padding-bottom: 6rem;
+    }
+    
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 9999;
+      animation: grain 8s steps(1) infinite;
+    }
+    
+    @keyframes grain {
+      0%, 100% { transform: translate(0, 0); }
+      10% { transform: translate(-1%, -1%); }
+      20% { transform: translate(1%, 0%); }
+      30% { transform: translate(0%, 1%); }
+      40% { transform: translate(-1%, 1%); }
+      50% { transform: translate(1%, -1%); }
+      60% { transform: translate(0%, 0%); }
+      70% { transform: translate(1%, 1%); }
+      80% { transform: translate(-1%, 0%); }
+      90% { transform: translate(0%, -1%); }
+    }
+    
+    /* Header */
+    .lab-header {
+      position: sticky;
+      top: 0;
+      background: rgba(13,12,10,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .lab-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+    }
+    
+    .lab-subtitle {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+    
+    .lab-nav {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    
+    .lab-nav a {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    
+    .lab-nav a:hover { color: var(--text); }
+    
+    /* Section */
+    .section {
+      padding: 4rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.63rem;
+      color: var(--dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    
+    /* Color Grid */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    
+    .color-swatch {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    
+    .color-preview {
+      height: 80px;
+      position: relative;
+    }
+    
+    .color-info {
+      padding: 0.75rem;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+    }
+    
+    .color-name {
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    
+    .color-hex {
+      color: var(--dim);
+    }
+    
+    /* Typography Scale */
+    .type-scale {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .type-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 2rem;
+      align-items: baseline;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .type-meta {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    
+    .type-spec {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      margin-top: 0.25rem;
+    }
+    
+    /* Spacing Scale */
+    .spacing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .spacing-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    
+    .spacing-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      width: 100px;
+      text-transform: uppercase;
+    }
+    
+    .spacing-bar {
+      background: var(--amber);
+      height: 8px;
+      border-radius: 1px;
+    }
+    
+    .spacing-value {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--muted);
+      min-width: 60px;
+    }
+    
+    /* Component Showcase */
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    
+    .component-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      background: var(--bg2);
+    }
+    
+    .component-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: var(--radius);
+      transition: opacity 0.18s;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .btn-amber {
+      background: var(--amber);
+      color: var(--bg);
+    }
+    
+    .btn-amber:hover { opacity: 0.84; }
+    
+    .btn-outline {
+      border: 1px solid var(--border-hi);
+      color: var(--muted);
+      background: transparent;
+    }
+    
+    .btn-outline:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+    
+    .btn-ghost {
+      color: var(--muted);
+      background: transparent;
+      padding: 0.7rem 0;
+    }
+    
+    .btn-ghost:hover { color: var(--text); }
+    
+    /* Tags */
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.07em;
+      padding: 0.18rem 0.55rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--dim);
+      margin-right: 0.4rem;
+    }
+    
+    .tag-accent {
+      border-color: rgba(224, 152, 48, 0.3);
+      color: var(--amber);
+      background: var(--amber-bg);
+    }
+    
+    .tag-teal {
+      border-color: rgba(42, 158, 122, 0.3);
+      color: var(--teal);
+      background: var(--teal-bg);
+    }
+    
+    /* Motion Specs */
+    .motion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .motion-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    
+    .motion-demo {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg3);
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+    }
+    
+    .motion-block {
+      width: 40px;
+      height: 40px;
+      background: var(--amber);
+      border-radius: var(--radius);
+    }
+    
+    .motion-fade { animation: fadeDemo 2s ease infinite; }
+    .motion-slide { animation: slideDemo 2s var(--ease-smooth) infinite; }
+    .motion-scale { animation: scaleDemo 2s var(--ease-smooth) infinite; }
+    
+    @keyframes fadeDemo {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+    
+    @keyframes slideDemo {
+      0%, 100% { transform: translateX(-20px); }
+      50% { transform: translateX(20px); }
+    }
+    
+    @keyframes scaleDemo {
+      0%, 100% { transform: scale(0.8); }
+      50% { transform: scale(1.2); }
+    }
+    
+    /* Tweaks Panel */
+    .tweaks-panel {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      min-width: 220px;
+      z-index: 200;
+    }
+    
+    .tweaks-title {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    
+    .tweak-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    
+    .tweak-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    
+    .tweak-toggle {
+      width: 40px;
+      height: 20px;
+      background: var(--border);
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      transition: background 0.18s;
+    }
+    
+    .tweak-toggle.active {
+      background: var(--amber);
+    }
+    
+    .tweak-toggle::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      background: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.18s;
+    }
+    
+    .tweak-toggle.active::after {
+      transform: translateX(20px);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .component-grid { grid-template-columns: 1fr; }
+      .motion-grid { grid-template-columns: 1fr; }
+      .lab-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="lab-header">
+    <div>
+      <h1 class="lab-title">Design System Lab</h1>
+      <p class="lab-subtitle">Ayush Portfolio — Component Library & Tokens</p>
+    </div>
+    <nav>
+      <ul class="lab-nav">
+        <li><a href="#colors">Colors</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#spacing">Spacing</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#motion">Motion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Colors Section -->
+  <section id="colors" class="section">
+    <div class="section-rule">
+      <span class="section-label">01 — Colors</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #0d0c0a;"></div>
+        <div class="color-info">
+          <div class="color-name">Background</div>
+          <div class="color-hex">#0d0c0a</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #131210;"></div>
+        <div class="color-info">
+          <div class="color-name">Background 2</div>
+          <div class="color-hex">#131210</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #1a1814;"></div>
+        <div class="color-info">
+          <div class="color-name">Background 3</div>
+          <div class="color-hex">#1a1814</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #ede9e1;"></div>
+        <div class="color-info">
+          <div class="color-name">Text</div>
+          <div class="color-hex">#ede9e1</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #9a9488;"></div>
+        <div class="color-info">
+          <div class="color-name">Muted</div>
+          <div class="color-hex">#9a9488</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #6a6560;"></div>
+        <div class="color-info">
+          <div class="color-name">Dim</div>
+          <div class="color-hex">#6a6560</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #e09830;"></div>
+        <div class="color-info">
+          <div class="color-name">Amber</div>
+          <div class="color-hex">#e09830</div>
+        </div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background: #2a9e7a;"></div>
+        <div class="color-info">
+          <div class="color-name">Teal</div>
+          <div class="color-hex">#2a9e7a</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography Section -->
+  <section id="typography" class="section">
+    <div class="section-rule">
+      <span class="section-label">02 — Typography</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="type-scale">
+      <div class="type-item">
+        <div class="type-meta">
+          <div>Hero Title</div>
+          <div class="type-spec">Fraunces · 300 · 2.5rem</div>
+        </div>
+        <h1 style="font-family: var(--serif); font-size: 2.5rem; font-weight: 300; letter-spacing: -0.01em;">Founder · Engineer · Builder</h1>
+      </div>
+      <div class="type-item">
+        <div class="type-meta">
+          <div>H2 / Section Title</div>
+          <div class="type-spec">Fraunces · 300 · 1.4rem</div>
+        </div>
+        <h2 style="font-family: var(--serif); font-size: 1.4rem; font-weight: 300; letter-spacing: -0.01em;">Current frontier</h2>
+      </div>
+      <div class="type-item">
+        <div class="type-meta">
+          <div>Body Large</div>
+          <div class="type-spec">DM Sans · 400 · 1rem</div>
+        </div>
+        <p style="font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300;">Founder-engineer building intelligence where systems, infrastructure, and execution meet.</p>
+      </div>
+      <div class="type-item">
+        <div class="type-meta">
+          <div>Body</div>
+          <div class="type-spec">DM Sans · 400 · 0.83rem</div>
+        </div>
+        <p style="font-size: 0.83rem; color: var(--muted); line-height: 1.7;">Designing systems that can plan, coordinate tools, and operate with durable structure instead of prompt spaghetti.</p>
+      </div>
+      <div class="type-item">
+        <div class="type-meta">
+          <div>Caption / UI</div>
+          <div class="type-spec">DM Mono · 400 · 0.6rem</div>
+        </div>
+        <p style="font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim);">Agentic systems · BCI · Embedded</p>
+      </div>
+      <div class="type-item">
+        <div class="type-meta">
+          <div>Eyebrow</div>
+          <div class="type-spec">DM Mono · 400 · 0.65rem</div>
+        </div>
+        <p style="font-family: var(--mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; display: flex; align-items: center; gap: 0.7rem;"><span style="width: 20px; height: 1px; background: var(--amber);"></span>Founder-engineer · systems builder</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Spacing Section -->
+  <section id="spacing" class="section">
+    <div class="section-rule">
+      <span class="section-label">03 — Spacing</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="spacing-grid">
+      <div class="spacing-item">
+        <span class="spacing-label">XS</span>
+        <div class="spacing-bar" style="width: 4px;"></div>
+        <span class="spacing-value">4px</span>
+      </div>
+      <div class="spacing-item">
+        <span class="spacing-label">SM</span>
+        <div class="spacing-bar" style="width: 8px;"></div>
+        <span class="spacing-value">8px</span>
+      </div>
+      <div class="spacing-item">
+        <span class="spacing-label">MD</span>
+        <div class="spacing-bar" style="width: 16px;"></div>
+        <span class="spacing-value">16px</span>
+      </div>
+      <div class="spacing-item">
+        <span class="spacing-label">LG</span>
+        <div class="spacing-bar" style="width: 24px;"></div>
+        <span class="spacing-value">24px</span>
+      </div>
+      <div class="spacing-item">
+        <span class="spacing-label">XL</span>
+        <div class="spacing-bar" style="width: 40px;"></div>
+        <span class="spacing-value">40px</span>
+      </div>
+      <div class="spacing-item">
+        <span class="spacing-label">2XL</span>
+        <div class="spacing-bar" style="width: 64px;"></div>
+        <span class="spacing-value">64px</span>
+      </div>
+      <div class="spacing-item">
+        <span class="spacing-label">Section</span>
+        <div class="spacing-bar" style="width: 96px;"></div>
+        <span class="spacing-value">96px</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components Section -->
+  <section id="components" class="section">
+    <div class="section-rule">
+      <span class="section-label">04 — Components</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="component-grid">
+      <div class="component-card">
+        <div class="component-label">Buttons</div>
+        <div style="display: flex; flex-direction: column; gap: 1rem; align-items: flex-start;">
+          <button class="btn btn-amber">Primary Action</button>
+          <button class="btn btn-outline">Secondary Action</button>
+          <button class="btn btn-ghost">Text Link →</button>
+        </div>
+      </div>
+      <div class="component-card">
+        <div class="component-label">Tags</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+          <span class="tag">BCI</span>
+          <span class="tag">Agentic Systems</span>
+          <span class="tag tag-accent">Featured</span>
+          <span class="tag tag-teal">Active</span>
+          <span class="tag">Embedded</span>
+          <span class="tag">Hardware</span>
+        </div>
+      </div>
+      <div class="component-card">
+        <div class="component-label">Section Rule</div>
+        <div class="section-rule" style="margin: 0;">
+          <span class="section-label">Section Title</span>
+          <span class="section-line"></span>
+        </div>
+      </div>
+      <div class="component-card">
+        <div class="component-label">Eyebrow Pattern</div>
+        <div class="eyebrow" style="font-family: var(--mono); font-size: 0.65rem; color: var(--amber); letter-spacing: 0.12em; text-transform: uppercase; display: flex; align-items: center; gap: 0.7rem;">
+          <span style="width: 20px; height: 1px; background: var(--amber);"></span>
+          Featured Work
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motion Section -->
+  <section id="motion" class="section">
+    <div class="section-rule">
+      <span class="section-label">05 — Motion</span>
+      <span class="section-line"></span>
+    </div>
+    <div class="motion-grid">
+      <div class="motion-card">
+        <div class="motion-demo">
+          <div class="motion-block motion-fade"></div>
+        </div>
+        <div class="component-label">Fade — 0.55s ease</div>
+        <p style="font-size: 0.7rem; color: var(--dim);">Standard reveal animation for content sections</p>
+      </div>
+      <div class="motion-card">
+        <div class="motion-demo">
+          <div class="motion-block motion-slide"></div>
+        </div>
+        <div class="component-label">Slide — 0.65s cubic-bezier(0.16, 1, 0.3, 1)</div>
+        <p style="font-size: 0.7rem; color: var(--dim);">Entrance animations with smooth deceleration</p>
+      </div>
+      <div class="motion-card">
+        <div class="motion-demo">
+          <div class="motion-block motion-scale"></div>
+        </div>
+        <div class="component-label">Scale — Hover interactions</div>
+        <p style="font-size: 0.7rem; color: var(--dim);">Button/card hover feedback</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tweaks Panel -->
+  <div class="tweaks-panel">
+    <div class="tweaks-title">Tweaks</div>
+    <div class="tweak-item">
+      <span class="tweak-label">Show Grid</span>
+      <div class="tweak-toggle" onclick="this.classList.toggle('active')"></div>
+    </div>
+    <div class="tweak-item">
+      <span class="tweak-label">Motion</span>
+      <div class="tweak-toggle active" onclick="this.classList.toggle('active')"></div>
+    </div>
+    <div class="tweak-item">
+      <span class="tweak-label">Contrast</span>
+      <div class="tweak-toggle" onclick="this.classList.toggle('active')"></div>
+    </div>
+  </div>
+</body>
+</html>

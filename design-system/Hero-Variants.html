@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Variants — Ayush Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0c0a;
+      --bg2: #131210;
+      --bg3: #1a1814;
+      --border: rgba(255,255,255,0.06);
+      --border-hi: rgba(255,255,255,0.12);
+      --text: #ede9e1;
+      --muted: #9a9488;
+      --dim: #6a6560;
+      --amber: #e09830;
+      --teal: #2a9e7a;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Tab Navigation */
+    .variant-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(13,12,10,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+    
+    .variant-tab {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    
+    .variant-tab:hover { color: var(--text); border-color: var(--muted); }
+    .variant-tab.active { 
+      color: var(--bg); 
+      background: var(--amber); 
+      border-color: var(--amber);
+    }
+    
+    /* Variant Container */
+    .variant-container {
+      min-height: 100vh;
+      display: none;
+    }
+    
+    .variant-container.active { display: block; }
+    
+    /* Common Elements */
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--amber);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    
+    .eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--amber);
+    }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.6rem;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.18s;
+      text-decoration: none;
+      border: none;
+    }
+    
+    .btn-primary {
+      background: var(--amber);
+      color: var(--bg);
+    }
+    
+    .btn-primary:hover { opacity: 0.85; }
+    
+    .btn-secondary {
+      border: 1px solid var(--border-hi);
+      color: var(--muted);
+      background: transparent;
+    }
+    
+    .btn-secondary:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+    
+    /* === VARIANT 1: CONSERVATIVE === */
+    /* Stays close to existing design — minimal changes, refined execution */
+    .hero-conservative {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6rem 4rem 4rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    
+    .hero-conservative .eyebrow { margin-bottom: 2rem; }
+    
+    .hero-conservative h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-conservative .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+    }
+    
+    .hero-conservative .ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .hero-conservative .scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.5;
+    }
+    
+    .hero-conservative .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+    }
+    
+    /* === VARIANT 2: STRONG-FIT === */
+    /* Best interpretation — bold hierarchy, better visual interest */
+    .hero-strong {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding: 6rem 4rem 4rem;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .hero-strong .content-col {
+      max-width: 600px;
+    }
+    
+    .hero-strong .eyebrow { margin-bottom: 1.5rem; }
+    
+    .hero-strong h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-strong h1 span {
+      display: block;
+      color: var(--muted);
+    }
+    
+    .hero-strong .subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 480px;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-strong .ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    
+    .hero-strong .visual-col {
+      position: relative;
+      height: 100%;
+      min-height: 400px;
+    }
+    
+    .hero-strong .orb {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(224,152,48,0.4), rgba(224,152,48,0.05) 60%);
+      filter: blur(40px);
+      animation: orbFloat 10s ease-in-out infinite;
+    }
+    
+    .hero-strong .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.3;
+    }
+    
+    .hero-strong .stats-row {
+      position: absolute;
+      bottom: 2rem;
+      right: 0;
+      display: flex;
+      gap: 3rem;
+    }
+    
+    .hero-strong .stat {
+      text-align: left;
+    }
+    
+    .hero-strong .stat-value {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--text);
+    }
+    
+    .hero-strong .stat-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+    
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, -30px) scale(1.1); }
+    }
+    
+    /* === VARIANT 3: DIVERGENT === */
+    /* Experimental — stacked text, minimal, asymmetric */
+    .hero-divergent {
+      min-height: 100vh;
+      display: flex;
+      padding: 8rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-divergent .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .hero-divergent .eyebrow {
+      position: absolute;
+      top: 6rem;
+      left: 4rem;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+    }
+    
+    .hero-divergent .eyebrow::before {
+      width: 1px;
+      height: 20px;
+    }
+    
+    .hero-divergent .name-stack {
+      margin-left: 3rem;
+    }
+    
+    .hero-divergent .name-line {
+      font-family: var(--serif);
+      font-size: clamp(3.5rem, 10vw, 9rem);
+      font-weight: 300;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      display: block;
+    }
+    
+    .hero-divergent .name-line:nth-child(1) { color: var(--text); }
+    .hero-divergent .name-line:nth-child(2) { color: var(--muted); margin-left: 0.5em; }
+    .hero-divergent .name-line:nth-child(3) { 
+      color: transparent;
+      -webkit-text-stroke: 1px var(--border-hi);
+      margin-left: 1em;
+    }
+    
+    .hero-divergent .descriptor {
+      position: absolute;
+      bottom: 6rem;
+      right: 4rem;
+      max-width: 300px;
+      text-align: right;
+    }
+    
+    .hero-divergent .descriptor p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-divergent .descriptor .btn {
+      margin-left: auto;
+      display: block;
+      width: fit-content;
+    }
+    
+    .hero-divergent .corner-lines {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      width: 100px;
+      height: 100px;
+    }
+    
+    .hero-divergent .corner-lines::before,
+    .hero-divergent .corner-lines::after {
+      content: '';
+      position: absolute;
+      background: var(--amber);
+    }
+    
+    .hero-divergent .corner-lines::before {
+      width: 60px;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+    }
+    
+    .hero-divergent .corner-lines::after {
+      width: 1px;
+      height: 60px;
+      bottom: 0;
+      left: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-strong {
+        grid-template-columns: 1fr;
+        padding: 5rem 2rem;
+      }
+      
+      .hero-strong .visual-col {
+        display: none;
+      }
+      
+      .hero-divergent {
+        padding: 5rem 2rem;
+      }
+      
+      .hero-divergent .eyebrow {
+        position: relative;
+        top: auto;
+        left: auto;
+        writing-mode: horizontal-tb;
+        transform: none;
+        margin-bottom: 2rem;
+      }
+      
+      .hero-divergent .name-stack {
+        margin-left: 0;
+      }
+      
+      .hero-divergent .descriptor {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        margin-top: 3rem;
+        text-align: left;
+      }
+      
+      .hero-conservative {
+        padding: 5rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Variant Navigation -->
+  <div class="variant-nav">
+    <button class="variant-tab active" onclick="showVariant('v1')">01 — Conservative</button>
+    <button class="variant-tab" onclick="showVariant('v2')">02 — Strong-fit</button>
+    <button class="variant-tab" onclick="showVariant('v3')">03 — Divergent</button>
+  </div>
+
+  <!-- VARIANT 1: Conservative -->
+  <div id="v1" class="variant-container active">
+    <section class="hero-conservative">
+      <div class="eyebrow">Founder-engineer · systems builder</div>
+      <h1>Ayush Mahajan</h1>
+      <p class="subtitle">Founder-engineer building intelligence where systems, infrastructure, and execution meet. Previously founded Cerebralx (BCI), now building PerPitch and agentic systems.</p>
+      <div class="ctas">
+        <a href="#work" class="btn btn-primary">View Work →</a>
+        <a href="#focus" class="btn btn-secondary">Current Focus</a>
+        <a href="mailto:mahajan.ayush9909@gmail.com" class="btn btn-secondary" style="border: none; padding-left: 0;">Get in touch</a>
+      </div>
+      <div class="scroll-hint">
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 2: Strong-fit -->
+  <div id="v2" class="variant-container">
+    <section class="hero-strong">
+      <div class="content-col">
+        <div class="eyebrow">Founder-engineer · systems builder</div>
+        <h1>Ayush<span>Mahajan</span></h1>
+        <p class="subtitle">Building intelligence at the intersection of systems, infrastructure, and execution. From brain-computer interfaces to AI agentic systems.</p>
+        <div class="ctas">
+          <a href="#work" class="btn btn-primary">View Work →</a>
+          <a href="#focus" class="btn btn-secondary">Current Focus</a>
+        </div>
+      </div>
+      <div class="visual-col">
+        <div class="grid-pattern"></div>
+        <div class="orb"></div>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-value">4+</div>
+            <div class="stat-label">Years BCI Research</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">50+</div>
+            <div class="stat-label">Investor Pitches</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- VARIANT 3: Divergent -->
+  <div id="v3" class="variant-container">
+    <section class="hero-divergent">
+      <div class="eyebrow">Founder-engineer · systems builder</div>
+      <div class="content">
+        <div class="name-stack">
+          <span class="name-line">Ayush</span>
+          <span class="name-line">Mahajan</span>
+          <span class="name-line">Engineer</span>
+        </div>
+        <div class="descriptor">
+          <p>Founder-engineer building intelligence where systems, infrastructure, and execution meet.</p>
+          <a href="#work" class="btn btn-primary">View Work →</a>
+        </div>
+        <div class="corner-lines"></div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    function showVariant(id) {
+      document.querySelectorAll('.variant-container').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.variant-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { AgentPanel } from "../components/AgentPanel";
 import { MagneticBtn } from "../components/MagneticBtn";
+import { SEO } from "../components/SEO";
 
 function useCountUp(target: number, duration = 1500, start = 0): React.RefObject<HTMLSpanElement> {
   const ref = useRef<HTMLSpanElement>(null);
@@ -63,6 +64,11 @@ export function Home() {
 
   return (
     <div className="page">
+      <SEO
+        title="Founder-Engineer"
+        description="Ayush Mahajan — founder-engineer building CallPilot (voice AI), AI-Swaraj (129M offline MoE model), and AgentCommerce (on-chain agent escrow). Previously founded Cerebralx (BCI)."
+        path="/"
+      />
       {/* Hero Section */}
       <div className="hero">
         <div className="hero-orb" />
@@ -72,11 +78,11 @@ export function Home() {
               <div className="hero-kicker">Founder-Engineer · New Delhi, India</div>
               <h1 className="display">
                 From neural interfaces<br />
-                to venture infrastructure<br />
-                to <em>agentic systems.</em>
+                to sovereign AI<br />
+                to <em>agentic commerce.</em>
               </h1>
               <p className="hero-sub">
-                I build at the intersection of systems, intelligence, and execution. Currently: PerPitch — AI infrastructure for how early-stage founders are evaluated.
+                I build at the intersection of systems, intelligence, and execution. Currently: CallPilot, AI-Swaraj, AgentCommerce — and PerPitch for founder evaluation.
               </p>
               <div className="hero-ctas">
                 <MagneticBtn><a href="/work" className="btn btn-amber">See the work</a></MagneticBtn>
@@ -108,7 +114,7 @@ export function Home() {
           <div className="proof-cell reveal">
             <div className="proof-num">Now</div>
             <div className="proof-key">PerPitch + builds</div>
-            <div className="proof-detail">Venture infra · local AI · agent systems · AI security</div>
+            <div className="proof-detail">CallPilot · AI-Swaraj · AgentCommerce · AI security</div>
           </div>
         </div>
       </div>
@@ -154,19 +160,19 @@ export function Home() {
             >
               <span className="feat-arrow">↗</span>
               <div className="feat-period">
-                <span className="feat-dot"></span>
-                Hardtech · BCI · 2019–2024
+                <span className="feat-dot teal"></span>
+                Voice AI · Current
               </div>
-              <div className="feat-title">Cerebralx — brain-computer interface for verbal disability</div>
+              <div className="feat-title">CallPilot — AI voicemail with intelligent escalation</div>
               <div className="feat-desc">
-                Nearly five years building an LLM-powered SSVEP BCI — electronics, firmware, software, real-time ML. Also a full startup: fundraising, 50+ investor pitches, accelerators, healthcare validation. Defined everything that came after.
+                Real-time AI answers missed calls, captures who called and why in 25-40 seconds, detects urgency, and sends structured WhatsApp cards within 60 seconds. Twilio + Deepgram + Claude via Pipecat.
               </div>
               <div className="feat-tags">
-                <span className="tag">SSVEP</span>
-                <span className="tag">Embedded</span>
-                <span className="tag">Real-time ML</span>
-                <span className="tag">Fundraising</span>
-                <span className="tag tag-amber">Founder</span>
+                <span className="tag">Twilio</span>
+                <span className="tag">Deepgram</span>
+                <span className="tag">Claude</span>
+                <span className="tag">Pipecat</span>
+                <span className="tag tag-teal">Live</span>
               </div>
             </div>
             <div
@@ -177,36 +183,38 @@ export function Home() {
               <span className="feat-arrow">↗</span>
               <div className="feat-period">
                 <span className="feat-dot teal"></span>
-                Venture infra · 2024–Present
+                Sovereign AI · Current
               </div>
-              <div className="feat-title">PerPitch — AI founder evaluation infrastructure</div>
+              <div className="feat-title">AI-Swaraj — 129M MoE+MLA model from scratch</div>
               <div className="feat-desc">
-                After years of being evaluated, I built the system I wished existed. Behavioral intelligence and observability for how investors and accelerators assess founders.
+                Offline-first AI toolkit for Indian context. TinyMoE (129M params, 16 experts, MLA) runs on phone, Pi, or MacBook. Power cuts, connectivity, and privacy as design inputs.
               </div>
               <div className="feat-tags">
-                <span className="tag">AI systems</span>
-                <span className="tag">Venture infra</span>
+                <span className="tag">PyTorch</span>
+                <span className="tag">MoE+MLA</span>
+                <span className="tag">Offline-first</span>
                 <span className="tag tag-teal">Active</span>
               </div>
             </div>
             <div
               className="feat-card"
-              onClick={() => (window.location.href = "/lab")}
+              onClick={() => (window.location.href = "/work")}
               style={{ cursor: "pointer" }}
             >
               <span className="feat-arrow">↗</span>
               <div className="feat-period">
-                <span className="feat-dot"></span>
-                Systems · In progress
+                <span className="feat-dot teal"></span>
+                On-chain · Current
               </div>
-              <div className="feat-title">Offline-first personal AI agent</div>
+              <div className="feat-title">AgentCommerce — escrow protocol for agent labor</div>
               <div className="feat-desc">
-                Cross-platform agent app where offline constraints and real device limits shape architecture from day one. Cactus SDK, iOS and Android, local inference only.
+                ERC-8183-aligned smart contracts where AI agents post bounties, humans deliver work, and payments release automatically. Transparent trust without platform risk.
               </div>
               <div className="feat-tags">
-                <span className="tag">Cactus SDK</span>
-                <span className="tag">Local inference</span>
-                <span className="tag">Orchestration</span>
+                <span className="tag">Solidity</span>
+                <span className="tag">Foundry</span>
+                <span className="tag">Base L2</span>
+                <span className="tag tag-teal">67 tests</span>
               </div>
             </div>
           </div>
@@ -243,8 +251,8 @@ export function Home() {
             <div className="arc-row">
               <div className="arc-period">2024–Now</div>
               <div>
-                <div className="arc-title">PerPitch + current builds</div>
-                <div className="arc-desc">Venture evaluation infrastructure, local AI agents, AI security research, agent orchestration systems.</div>
+                <div className="arc-title">CallPilot + AI-Swaraj + AgentCommerce</div>
+                <div className="arc-desc">Voice AI, sovereign AI stacks, on-chain escrow for agent labor markets, and venture evaluation infrastructure.</div>
               </div>
             </div>
           </div>

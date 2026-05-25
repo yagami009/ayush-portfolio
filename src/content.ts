@@ -13,11 +13,11 @@ export const siteContent = {
   },
 
   hero: {
-    eyebrow: "Founder-engineer · systems builder",
-    headline: "From neural interfaces\nto venture infrastructure\nto agentic systems.",
+    eyebrow: "Founder-engineer · AI infrastructure",
+    headline: "From neural interfaces\\nto sovereign AI\\nto agentic commerce.",
     subheadline: "Founder-engineer building intelligence where systems, infrastructure, and execution meet.",
     intro:
-      "I previously founded Cerebralx, where I spent nearly five years building a brain-computer interface system across hardware, firmware, and software. That journey took me deep into fundraising, accelerators, and founder evaluation — and led to PerPitch, a venture focused on building better infrastructure for how early-stage founders are assessed. Today, my work also spans agentic systems, AI security, local inference, and execution-first AI architecture.",
+      "I previously founded Cerebralx, building a brain-computer interface across hardware, firmware, and software. That journey led to PerPitch, building AI infrastructure for founder evaluation. Today, I'm focused on voice AI (CallPilot), sovereign AI stacks (AI-Swaraj), and on-chain escrow for agent labor markets (AgentCommerce).",
     primaryCta: { label: "View Work", href: "#work" },
     secondaryCta: { label: "Current Focus", href: "#current-focus" },
     tertiaryCta: { label: "Notes", href: "#notes" },
@@ -49,12 +49,22 @@ export const siteContent = {
   currentFocus: {
     title: "Current frontier",
     intro:
-      "My current work is focused on the layer where AI becomes operational.",
+      "Building three systems where AI meets real-world constraints: voice, sovereignty, and commerce.",
     areas: [
       {
-        title: "Agentic systems and orchestration",
+        title: "CallPilot — Voice AI",
         description:
-          "Designing systems that can plan, coordinate tools, and operate with durable structure instead of prompt spaghetti.",
+          "Real-time AI voicemail with intelligent escalation. Twilio + Deepgram + Claude via Pipecat. Sub-2s latency, WhatsApp-first notifications.",
+      },
+      {
+        title: "AI-Swaraj — Sovereign AI",
+        description:
+          "129M MoE+MLA model from scratch. Offline-first for Indian context. Constraint-native design: power cuts, connectivity, privacy.",
+      },
+      {
+        title: "AgentCommerce — Agentic Commerce",
+        description:
+          "ERC-8183-aligned escrow protocol. On-chain trust for AI-agent labor markets. Base L2, OpenZeppelin, 67 tests passing.",
       },
       {
         title: "AI security",
@@ -67,38 +77,58 @@ export const siteContent = {
           "Exploring what becomes possible when intelligence runs closer to the user, under tighter resource constraints and stronger privacy assumptions.",
       },
       {
-        title: "Offline-first AI agent app",
+        title: "Agentic systems and orchestration",
         description:
-          "A cross-platform personal AI agent app using Cactus SDK for iOS and Android, built around offline-first architecture.",
-      },
-      {
-        title: "Local RAG systems",
-        description:
-          "Practical retrieval pipelines built with ChromaDB, Ollama, and LangChain — not stopped at notebook-level prototypes.",
-      },
-      {
-        title: "Multi-tool agent flows",
-        description:
-          "Building orchestration-heavy agent systems using LangGraph that go beyond simple chat wrappers.",
+          "Designing systems that can plan, coordinate tools, and operate with durable structure instead of prompt spaghetti.",
       },
     ],
   },
 
   featuredWork: [
     {
-      slug: "cerebralx",
-      title: "Cerebralx",
-      timeframe: "2019 — 2024",
+      slug: "callpilot",
+      title: "CallPilot",
+      timeframe: "Current",
       summary:
-        "A hardtech venture building an LLM-powered SSVEP brain-computer interface for verbally disabled communication.",
-      role: "Founder & Principal Engineer",
+        "AI voicemail with intelligent escalation — captures caller intent via voice AI, sends WhatsApp card within 60 seconds.",
+      role: "Builder",
       whatItWas:
-        "Cerebralx was my longest and most defining founder chapter. I built an LLM-powered SSVEP brain-computer interface designed to help verbally disabled individuals communicate through thought decoding. The work spanned electronics, firmware, software, machine learning behavior, and low-latency systems running under real constraints.",
+        "CallPilot answers missed calls with a real-time AI voice agent that captures who called, why, and urgency in 25-40 seconds. It detects VIP callers and emergency keywords, escalates urgent calls via conference bridge, and sends structured WhatsApp notifications within 60 seconds.",
       whyItMattered:
-        "But Cerebralx was not just a technical build. It was a full startup journey. I navigated early-stage fundraising, pitched to 50+ institutional investors, worked with E-Cell programs and accelerator ecosystems, and led validation with healthcare stakeholders. That experience gave me firsthand exposure to how founders are judged — and where that process breaks down.",
-      themes: ["BCI", "SSVEP", "embedded systems", "firmware", "electronics", "real-time ML", "fundraising", "healthcare"],
+        "Professionals miss 40% of calls during deep work. Existing voicemail gives raw transcripts with no context. CallPilot provides structured intent, not rambling 3-minute recordings.",
+      themes: ["real-time voice AI", "Twilio", "Deepgram", "Claude", "Pipecat", "telephony", "WhatsApp"],
       outcome:
-        "Cerebralx led directly to PerPitch. Years of being evaluated taught me more about founder evaluation than any book or framework could.",
+        "34 test calls processed in 4 days. Phase 1 MVP complete in 48 hours. 24 API endpoints + dashboard with auto-refresh.",
+    },
+    {
+      slug: "ai-swaraj",
+      title: "AI-Swaraj",
+      timeframe: "Current",
+      summary:
+        "129M parameter MoE+MLA model + offline-first AI toolkit for Indian context — runs entirely on consumer hardware.",
+      role: "Builder",
+      whatItWas:
+        "AI-Swaraj is a constraint-native AI toolkit that runs entirely offline on iPhone, Android, Raspberry Pi, or MacBook. It includes TinyMoE (129M MoE+MLA model from scratch in 173 lines of PyTorch) and domain-specialized adapters for tax, health, and legal verticals.",
+      whyItMattered:
+        "Indian professionals can't rely on cloud AI due to power cuts, connectivity issues, privacy concerns, and recurring costs. AI-Swaraj treats infrastructure constraints as design inputs, not obstacles.",
+      themes: ["MoE", "MLA", "PyTorch", "offline-first", "quantization", "Indian context", "sovereign AI"],
+      outcome:
+        "Model trains and generates coherent text. 87.7% score on health vertical benchmark. 20 product angles identified.",
+    },
+    {
+      slug: "agentcommerce",
+      title: "AgentCommerce",
+      timeframe: "Current",
+      summary:
+        "ERC-8183-aligned escrow protocol for AI-agent labor markets — on-chain trust layer for agent-to-human work.",
+      role: "Builder",
+      whatItWas:
+        "AgentCommerce is an on-chain escrow protocol that lets AI agents post bounties, humans claim and deliver work, and payments release automatically via smart contract. Aligned with ERC-8183 (Agentic Commerce), a draft Ethereum standard.",
+      whyItMattered:
+        "AI agents need to commission human work, but centralized platforms hold funds in black-box escrow with opaque fees. AgentCommerce provides transparent, programmable trust without platform risk.",
+      themes: ["ERC-8183", "Solidity", "Foundry", "OpenZeppelin", "Base L2", "escrow", "agentic commerce"],
+      outcome:
+        "67 Foundry tests passing. 12 smart contract functions. 5-page frontend. Production-grade security with OZ v5.6.",
     },
     {
       slug: "perpitch",
@@ -110,7 +140,7 @@ export const siteContent = {
       whatItWas:
         "PerPitch emerged from lived founder experience. After years of fundraising for Cerebralx, one thing became impossible to ignore: early-stage founder evaluation is still highly subjective, inconsistent, and difficult to track over time.",
       whyItMattered:
-        "PerPitch is building better infrastructure for that layer of the startup ecosystem — AI-powered systems for systematic founder evaluation, behavioral intelligence, and observability-style assessment for investors and accelerators. It sits at the intersection of venture workflows, pattern recognition, and intelligence systems built for real decision-making.",
+        "PerPitch is building better infrastructure for that layer of the startup ecosystem — AI-powered systems for systematic founder evaluation, behavioral intelligence, and observability-style assessment for investors and accelerators.",
       themes: ["founder evaluation", "behavioral intelligence", "venture infrastructure", "observability", "startup ecosystem", "AI systems"],
       outcome:
         "Discovered through lived fundraising experience, not theory. The gap was real before PerPitch existed.",
@@ -129,6 +159,21 @@ export const siteContent = {
       themes: ["Cactus SDK", "mobile AI", "offline-first", "local inference", "agent orchestration"],
       outcome:
         "In progress. The clearest expression of where my build focus is going.",
+    },
+    {
+      slug: "cerebralx",
+      title: "Cerebralx",
+      timeframe: "2019 — 2024",
+      summary:
+        "A hardtech venture building an LLM-powered SSVEP brain-computer interface for verbally disabled communication.",
+      role: "Founder & Principal Engineer",
+      whatItWas:
+        "Cerebralx was my longest and most defining founder chapter. I built an LLM-powered SSVEP brain-computer interface designed to help verbally disabled individuals communicate through thought decoding. The work spanned electronics, firmware, software, machine learning behavior, and low-latency systems running under real constraints.",
+      whyItMattered:
+        "But Cerebralx was not just a technical build. It was a full startup journey. I navigated early-stage fundraising, pitched to 50+ institutional investors, worked with E-Cell programs and accelerator ecosystems, and led validation with healthcare stakeholders. That experience gave me firsthand exposure to how founders are judged — and where that process breaks down.",
+      themes: ["BCI", "SSVEP", "embedded systems", "firmware", "electronics", "real-time ML", "fundraising", "healthcare"],
+      outcome:
+        "Cerebralx led directly to PerPitch. Years of being evaluated taught me more about founder evaluation than any book or framework could.",
     },
     {
       slug: "local-rag",
@@ -217,13 +262,13 @@ export const siteContent = {
       },
       {
         period: "2024 — Present",
-        title: "PerPitch",
-        body: "Started building AI infrastructure for systematic founder evaluation and the venture ecosystem. Discovered through lived experience, not theory.",
+        title: "PerPitch + CallPilot + AI-Swaraj + AgentCommerce",
+        body: "Building AI infrastructure for founder evaluation, voice AI with real-time escalation, sovereign AI stacks for Indian context, and on-chain escrow for agent labor markets.",
       },
       {
         period: "Now",
         title: "Agentic systems and local-first AI",
-        body: "Building around local inference, AI security, orchestration, and the execution layer of modern intelligent systems.",
+        body: "Building around voice AI, sovereign AI, agentic commerce, local inference, AI security, and the execution layer of modern intelligent systems.",
       },
     ],
   },
@@ -238,29 +283,12 @@ export const siteContent = {
       },
       {
         title: "Technical range across layers",
-        detail: "Hardware, firmware, embedded systems, cybersecurity, ML deployment, venture infrastructure, and current work in agentic and local-first AI systems.",
+        detail: "Hardware, firmware, embedded systems, cybersecurity, ML deployment, venture infrastructure, voice AI, sovereign AI, and current work in agentic and local-first AI systems.",
       },
       {
         title: "Fundraising and ecosystem exposure",
         detail: "Built through real startup pressure: 50+ investor conversations, accelerator exposure, and repeated iteration in early-stage environments.",
       },
-    ],
-  },
-
-  operatingLayer: {
-    title: "Operating layer",
-    intro: "A public-facing view of how I work. Not raw internals. Not theater. Just a designed abstraction of where effort is going right now.",
-    units: [
-      { name: "Research", status: "Active", detail: "AI security, venture infrastructure, agent platforms, local inference constraints, and system architecture." },
-      { name: "Archive", status: "Active", detail: "Turning projects, experiments, fundraising lessons, and technical decisions into durable notes." },
-      { name: "Build", status: "In motion", detail: "Agent tooling, founder-evaluation infrastructure, mobile AI flows, and local-first systems." },
-      { name: "Publish", status: "Warming up", detail: "Translating real work into public notes, X posts, and sharper proof of execution." },
-    ],
-    metrics: [
-      { label: "Mode", value: "Systems-first" },
-      { label: "Bias", value: "Execution over posture" },
-      { label: "Current terrain", value: "Venture infra + local AI" },
-      { label: "Build rhythm", value: "Ongoing" },
     ],
   },
 
@@ -272,7 +300,7 @@ export const siteContent = {
         date: "Apr 2026",
         title: "The offline-first constraint is the feature",
         excerpt:
-          "Building the Cactus SDK agent app taught me that offline isn't a fallback — it's a design constraint that produces better architecture. Network availability shouldn't determine feature set.",
+          "Building AI-Swaraj taught me that offline isn't a fallback — it's a design constraint that produces better architecture. Network availability shouldn't determine feature set.",
       },
       {
         date: "Mar 2026",
@@ -305,7 +333,7 @@ export const siteContent = {
     paragraphs: [
       "I came up through a non-traditional path. Self-taught, hands-on, and more interested in building than collecting credentials.",
       "Over the years, I've worked across cybersecurity, embedded systems, electronics, firmware, machine learning deployment, and venture-backed product building. The common thread has never been a single industry. It has been systems.",
-      "I'm most interested in the point where intelligence has to survive reality — where architecture, constraints, tooling, and execution matter more than demos. That's what connects Cerebralx, PerPitch, and my current work in agentic systems, AI security, and local-first AI infrastructure.",
+      "I'm most interested in the point where intelligence has to survive reality — where architecture, constraints, tooling, and execution matter more than demos. That's what connects Cerebralx, PerPitch, CallPilot, AI-Swaraj, and AgentCommerce.",
     ],
   },
 
@@ -340,6 +368,89 @@ export const siteContent = {
       context: "TiECon 2022",
     },
   ],
+
+  nowPage: {
+    lastUpdated: "May 2026",
+    location: "New Delhi, India",
+    building: [
+      {
+        title: "CallPilot",
+        description: "AI voicemail with intelligent escalation. Real-time voice AI that captures caller intent and sends structured WhatsApp notifications within 60 seconds.",
+        status: "Active — shipping",
+      },
+      {
+        title: "AI-Swaraj",
+        description: "129M MoE+MLA model from scratch + offline-first AI toolkit for Indian context. Runs on iPhone, Android, Raspberry Pi, or MacBook.",
+        status: "Active — model training",
+      },
+      {
+        title: "AgentCommerce",
+        description: "ERC-8183-aligned escrow protocol for AI-agent labor markets. On-chain trust layer for agent-to-human work.",
+        status: "Active — 67 tests passing",
+      },
+      {
+        title: "PerPitch",
+        description: "Building AI-powered infrastructure for systematic founder evaluation. Behavioral intelligence, longitudinal founder profiles, and observability-style assessment tools for investors.",
+        status: "Active — primary focus",
+      },
+      {
+        title: "Offline-first personal AI agent",
+        description: "Cross-platform agent app built on Cactus SDK for iOS and Android. Network availability shouldn't determine what your AI can do.",
+        status: "In progress",
+      },
+      {
+        title: "Multi-tool LangGraph agent",
+        description: "Orchestration-heavy agent project centred on multi-step coordination, tool usage, and structured agent behaviour.",
+        status: "In progress",
+      },
+    ],
+    researching: [
+      {
+        title: "AI security and agent attack surfaces",
+        description: "Systematic mapping of how agent systems fail under adversarial conditions. Prompt injection, unsafe tool execution, RCE surfaces.",
+        status: "Active research",
+      },
+      {
+        title: "On-device inference constraints and architecture",
+        description: "What actually changes when you move from cloud to on-device — not just model size, but orchestration design.",
+        status: "Active research",
+      },
+      {
+        title: "Venture ecosystem infrastructure",
+        description: "How early-stage evaluation actually works, where it consistently fails, and what tooling could make it more systematic.",
+        status: "Active research",
+      },
+    ],
+    openTo: [
+      {
+        title: "Co-founders",
+        description: "Specifically for PerPitch or adjacent infrastructure plays. If you've been inside the VC ecosystem and see the same gap I do, I want to talk.",
+      },
+      {
+        title: "Conversations about AI security",
+        description: "Researchers, red-teamers, or builders taking this seriously. The attack surface is large and underexplored. Happy to exchange notes.",
+      },
+      {
+        title: "Investors interested in PerPitch",
+        description: "If systematic founder evaluation infrastructure resonates, reach out. I know both sides of this conversation well.",
+      },
+    ],
+  },
+
+  operatingLayer: {
+    units: [
+      { name: "Research", status: "Active", detail: "AI security, venture infrastructure, agent platforms, local inference constraints, system architecture." },
+      { name: "Archive", status: "Active", detail: "Turning projects, experiments, fundraising lessons, and technical decisions into durable notes." },
+      { name: "Build", status: "In motion", detail: "Agent tooling, founder-evaluation infrastructure, mobile AI flows, voice AI, sovereign AI, agentic commerce, and local-first systems." },
+      { name: "Publish", status: "Warming up", detail: "Translating real work into public notes, X posts, and sharper proof of execution." },
+    ],
+    metrics: [
+      { label: "Mode", value: "Systems-first" },
+      { label: "Bias", value: "Execution over posture" },
+      { label: "Terrain", value: "Voice + Sovereign AI + Commerce" },
+      { label: "Rhythm", value: "Ongoing" },
+    ],
+  },
 };
 
 export const agentData = [
@@ -387,3 +498,26 @@ export const activityLogData = [
   { agent: "ARCHIVIST", ts: "03:00 UTC", action: "cross-referenced 2 CVE entries with internal research" },
   { agent: "OPERATOR", ts: "01:47 UTC", action: "daily digest compiled — 14 items queued for review" },
 ];
+
+// For Hero component
+export const profile = {
+  name: siteContent.brand.name,
+  tagline: siteContent.hero.subheadline,
+  intro: siteContent.hero.intro,
+  links: {
+    email: siteContent.brand.email,
+  },
+};
+
+// For Work component - maps featuredWork to expected format
+export const projects = siteContent.featuredWork.map((work: any, i: number) => ({
+  id: work.slug,
+  title: work.title,
+  description: work.summary,
+  shortDescription: work.summary.slice(0, 100) + (work.summary.length > 100 ? '...' : ''),
+  why: work.whyItMattered,
+  year: work.timeframe,
+  status: i < 3 ? 'ongoing' : 'completed',
+  role: work.role,
+  tags: work.themes,
+}));

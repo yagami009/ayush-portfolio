@@ -1,8 +1,54 @@
 import { useEffect, useState } from "react";
+import { SEO } from "../components/SEO";
 
 const posts = [
   {
     id: "p1",
+    date: "May 2026",
+    title: "CallPilot: 34 Calls to a Working AI Voicemail",
+    excerpt: "What I learned from building a real-time voice AI that answers missed calls, captures intent in 25 seconds, and escalates emergencies before the caller hangs up.",
+    tags: [{ label: "Voice AI" }, { label: "CallPilot", variant: "teal" }, { label: "Systems" }],
+    content: {
+      sections: [
+        { title: "The latency budget", body: "A missed call rings for 25 seconds before going to voicemail. That's the entire window. Your AI has to: pick up, greet, understand the caller's intent, classify urgency, and send a WhatsApp notification — all within 60 seconds. Every millisecond of latency eats into comprehension time." },
+        { title: "Escalation is the real product", body: "Voicemail is transcription. CallPilot is triage. The difference: detecting that a caller said 'emergency' or mentioned your name means the difference between a WhatsApp card and a live conference bridge handoff. Escalation turns a passive system into an active one." },
+        { title: "Why most voice AI demos break", body: "WebRTC is easy. PSTN is hard. Latency spikes, codec mismatches, VAD tuning, barge-in handling — the telco layer is where voice projects go to die. Pipecat + Deepgram Aura gave me the real-time pipeline. Everything else was wiring." },
+      ],
+      conclusion: "Voice AI isn't a prompt problem. It's a systems problem with a latency budget measured in seconds, not tokens.",
+    },
+  },
+  {
+    id: "p2",
+    date: "May 2026",
+    title: "Training a 129M MoE+MLA Model from Scratch",
+    excerpt: "Building AI-Swaraj taught me that offline isn't a fallback — it's a design constraint that produces better architecture. Loss 4.82→2.17, 16 routed experts, MLA attention.",
+    tags: [{ label: "AI" }, { label: "AI-Swaraj", variant: "teal" }, { label: "Training" }],
+    content: {
+      sections: [
+        { title: "Why MoE + MLA", body: "India has 1.4 billion people and terrible cloud reliability. A dense 129M model is forgettable. But 16 routed experts + 1 shared expert with Multi-head Latent Attention means each token only activates ~8M parameters — tiny compute, but the model still sees diverse knowledge across all experts." },
+        { title: "The training loop", body: "TinyStories as a curriculum. Loss from 4.82 to 2.17. Each expert specializes — some handle dialogue, some narrative, some reasoning patterns. MLA compresses KV cache so the model runs on a phone without OOMing. The architecture isn't flash — it's built for the constraint." },
+        { title: "The offline-first constraint", body: "Power cuts, 2G connectivity, ₹0 recurring cost. These aren't obstacles — they're design inputs. If your AI requires cloud, it's not for India. AI-Swaraj runs entirely on device because the use case demands it." },
+      ],
+      conclusion: "The offline-first constraint is the feature. Network availability shouldn't determine what intelligence you can access.",
+    },
+  },
+  {
+    id: "p3",
+    date: "May 2026",
+    title: "AgentCommerce: When AI Needs to Pay Humans",
+    excerpt: "AI agents will eventually need to commission human work. But centralized platforms hold escrow in black boxes. ERC-8183-aligned smart contracts make trust transparent.",
+    tags: [{ label: "Web3" }, { label: "AgentCommerce", variant: "teal" }, { label: "Smart contracts" }],
+    content: {
+      sections: [
+        { title: "The problem with platform escrow", body: "When an AI agent posts a bounty for human work — design, research, code review — centralized platforms hold the funds in opacity. You trust the platform's disbursement logic, their dispute resolution, their fee structure. That trust is assumed, not verified." },
+        { title: "Transparent trust via smart contracts", body: "ERC-8183 defines how agents and humans transact on-chain. Agent posts a bounty with escrowed funds. Human delivers work. Smart contract verifies completion and releases payment. No platform middleman, no hidden fees, no gatekeeping. 12 contract functions, 67 Foundry tests, OpenZeppelin v5.6." },
+        { title: "Why this matters now", body: "Agent-to-human labor markets are coming. The question isn't if — it's whether the trust layer will be open and verifiable, or locked inside another platform. AgentCommerce is the open alternative." },
+      ],
+      conclusion: "Programmable trust shouldn't require trusting a platform. Escrow should be transparent by default.",
+    },
+  },
+  {
+    id: "p4",
     date: "Apr 2026",
     title: "Founder Evaluation at Scale: What VCs Get Wrong",
     excerpt: "After pitching to 50+ investors and building evaluation infrastructure, I've seen both sides. Here's what actually predicts founder success — and why current methods miss most of it.",
@@ -17,22 +63,7 @@ const posts = [
     },
   },
   {
-    id: "p2",
-    date: "Apr 2026",
-    title: "Building Offline-First AI Agents",
-    excerpt: "Why the future of AI agents isn't in the cloud. Local LLMs, edge inference, and the architecture of truly personal AI — and the constraints that make it genuinely hard.",
-    tags: [{ label: "Architecture" }, { label: "Local AI" }, { label: "Agents" }],
-    content: {
-      sections: [
-        { title: "The problem with cloud-first agents", body: "Every API call is a privacy risk, a latency penalty (200–800ms), a dependency on someone else's uptime, and a cost that scales with usage. When your agent is processing your thoughts, local is the only ethical default." },
-        { title: "Architecture decisions", body: "On-device: smaller models (1–3B parameters) for simple tasks. Local network: self-hosted 7–13B models for complex reasoning. Cloud: only for tasks requiring external data or heavy compute.\n\nStorage: SQLite with vector extensions gives local vector search, no external dependencies, full privacy, and surprising performance." },
-        { title: "Lessons from Cerebralx", body: "Building a BCI taught me that milliseconds matter. When someone is trying to communicate through thought, you can't wait for a server response. The same principle applies to personal AI." },
-      ],
-      conclusion: "Constraints don't limit what you can build. They clarify what matters. The cloud is a fallback, not the default.",
-    },
-  },
-  {
-    id: "p3",
+    id: "p5",
     date: "Apr 2026",
     title: "AI Security Red Flags Every Founder Should Know",
     excerpt: "From prompt injection to RCE via tool execution — the attack surface of AI agents is larger than most realize. What I've learned building and researching agent security.",
@@ -48,7 +79,7 @@ const posts = [
     },
   },
   {
-    id: "p4",
+    id: "p6",
     date: "Mar 2026",
     title: "Structure Beats Prompt Cleverness",
     excerpt: "The more serious the system gets, the less impressive pure prompting feels. Why durable workflows, state, and memory matter more than well-crafted system prompts.",
@@ -63,7 +94,7 @@ const posts = [
     },
   },
   {
-    id: "p5",
+    id: "p7",
     date: "Mar 2026",
     title: "From Being Evaluated to Building the Evaluator",
     excerpt: "Fundraising for years changes the way you see startup infrastructure. How PerPitch came from moving from founder-side friction to system design for the ecosystem itself.",
@@ -75,36 +106,6 @@ const posts = [
         { title: "The friction becomes the product", body: "Every frustrating pitch experience became a data point. What would systematic founder evaluation look like? How do you capture trajectory, not just snapshots? Can behavioural patterns predict outcomes better than pedigree?" },
       ],
       conclusion: "Lived experience is the best product research. Sometimes you're building the thing you wish existed.",
-    },
-  },
-  {
-    id: "p6",
-    date: "Mar 2026",
-    title: "Local Is Not Free: The Hidden Costs of On-Device Inference",
-    excerpt: "On-device and local inference sound clean in theory. In practice, the constraints force sharper architectural choices than cloud demos ever reveal.",
-    tags: [{ label: "AI" }, { label: "Local inference" }, { label: "Architecture" }],
-    content: {
-      sections: [
-        { title: "The memory wall", body: "Cloud inference lets you provision gigabytes without thinking. On-device? Every megabyte counts. A 7B model at 4-bit quantisation still needs ~4GB for weights alone. Add KV cache and application overhead and you're pushing device limits fast." },
-        { title: "Orchestration overhead", body: "Cloud agents assume infinite scale. Local agents must manage model loading/unloading (seconds, not milliseconds), context window across sessions, background processing without killing battery, and concurrent operations on limited threads. The orchestration layer becomes the product." },
-        { title: "Model behaviour under constraints", body: "Quantised models behave differently. They hallucinate more, follow instructions less precisely, and exhibit edge cases you won't see in cloud deployments. This has to be designed around, not ignored." },
-      ],
-      conclusion: "Constraints don't limit what you can build. They clarify what matters.",
-    },
-  },
-  {
-    id: "p7",
-    date: "Mar 2026",
-    title: "Security Changes the Way You Build Agents",
-    excerpt: "The interesting question isn't whether an agent can call a tool. It's what happens when the wrong input reaches the wrong capability boundary.",
-    tags: [{ label: "AI" }, { label: "Security" }, { label: "Tool use" }],
-    content: {
-      sections: [
-        { title: "The demo vs. the reality", body: "Most agent demos show the happy path. Production systems face adversarial inputs constantly — from users, from retrieved content, from chained tool outputs." },
-        { title: "The three failure modes", body: "Prompt injection. Malicious input overrides system instructions. Solutions exist but require explicit implementation. Most skip this until too late.\n\nUnsafe tool execution. An agent with file system access can delete files. One with database access can drop tables. The question isn't 'can the agent use the tool?' but 'should it, given this specific context?'\n\nCapability boundary confusion. When agents chain multiple tools, a prompt injection in step 1 can influence tool selection in step 3." },
-        { title: "Security-first architecture", body: "Input validation before LLM processing. Capability scoping per tool, per session. Human confirmation for destructive operations. Logging and observability to detect anomalies." },
-      ],
-      conclusion: "Security isn't overhead. It's a design constraint that produces more robust systems.",
     },
   },
 ];
@@ -138,6 +139,12 @@ export function Writing() {
 
   return (
     <div className="page">
+      <SEO
+        title="Writing"
+        description="Notes from the build process — CallPilot voice AI, AI-Swaraj training, AgentCommerce smart contracts, AI security, founder evaluation, and systems thinking. By Ayush Mahajan."
+        path="/writing"
+        type="article"
+      />
       <div className="page-hero">
         <div className="container">
           <div className="eyebrow">Writing</div>
@@ -163,7 +170,7 @@ export function Writing() {
                   <div className="post-excerpt">{post.excerpt}</div>
                   <div className="post-tag-list">
                     {post.tags.map((tag, i) => (
-                      <span key={i} className={`tag${tag.variant === "amber" ? " tag-amber" : ""}`}>{tag.label}</span>
+                      <span key={i} className={`tag${tag.variant === "amber" ? " tag-amber" : tag.variant === "teal" ? " tag-teal" : ""}`}>{tag.label}</span>
                     ))}
                   </div>
                 </div>

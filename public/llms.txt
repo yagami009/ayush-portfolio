@@ -1,0 +1,44 @@
+# Ayush Mahajan
+
+> Founder-engineer. Building intelligence where systems, infrastructure, and execution meet. Based in New Delhi, India.
+
+## Active Projects
+
+### CallPilot
+AI voicemail with intelligent escalation. Answers missed calls in real time, captures who called and why in 25-40 seconds, classifies urgency, and sends a structured WhatsApp notification within 60 seconds. Emergency detection triggers live conference bridge handoff. Built on Pipecat + Deepgram Aura. 34 test calls, 24 API endpoints. Status: Live.
+
+### AI-Swaraj
+129M MoE+MLA sovereign AI model built from scratch for Indian context. 16 routed experts + 1 shared expert with Multi-head Latent Attention. Each token activates ~8M parameters. Runs entirely offline on phone, Pi, or MacBook. Trained on TinyStories curriculum, loss 4.82 to 2.17. 87.7% health eval score. Constraint-native design: power cuts, connectivity, privacy. Status: Phase 2 complete, Phase 3 in progress.
+
+### AgentCommerce
+ERC-8183-aligned escrow protocol for AI-agent labor markets. When an AI agent needs to commission human work, AgentCommerce provides transparent, programmable trust via smart contracts instead of opaque platform escrow. 12 contract functions, 67 Foundry tests, OpenZeppelin v5.6, deployed on Base L2. Status: MVP complete.
+
+### PerPitch
+AI infrastructure for systematic founder evaluation. Tracks behavioral patterns across pitch iterations, measures execution velocity, and builds longitudinal founder profiles. Born from 50+ investor conversations during Cerebralx fundraising. Status: Active development.
+
+## Past Work
+
+### Cerebralx
+Brain-computer interface startup. 5 years (2019-2024). Built BCI hardware through FDA trials. Pitched 50+ VCs. The milliseconds-matter constraint from BCI work shaped everything that came after.
+
+## This Site
+
+- **Home**: https://ayushmh.com/ — Overview, featured work, founder arc
+- **Work**: https://ayushmh.com/work — CallPilot, AI-Swaraj, AgentCommerce, AI security research
+- **Lab**: https://ayushmh.com/lab — Current focus areas, operating layer, field notes
+- **Writing**: https://ayushmh.com/writing — Notes on voice AI, sovereign AI, agent commerce, security, founder evaluation
+- **Now**: https://ayushmh.com/now — What's active this month, building status, contact
+
+## Contact
+
+- Email: mahajan.ayush9909@gmail.com
+- Calendar: https://calendly.com/mahajan-ayush9909/30min
+- WhatsApp: https://wa.me/917206077760
+- LinkedIn: https://www.linkedin.com/in/ayush-mh/
+- X: https://x.com/0xayush_mh
+- GitHub: https://github.com/yagami009
+- Facebook: https://www.facebook.com/0ayushmh
+
+## Key Themes
+
+Voice AI latency budgets and PSTN constraints. Offline-first architecture as a design constraint, not a limitation. Programmable trust via smart contracts > platform trust. Security-first agent architecture. Structure beats prompt cleverness. The offline-first constraint is the feature.

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Work Card Variants — Ayush Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0c0a;
+      --bg2: #131210;
+      --bg3: #1a1814;
+      --border: rgba(255,255,255,0.06);
+      --border-hi: rgba(255,255,255,0.12);
+      --text: #ede9e1;
+      --muted: #9a9488;
+      --dim: #6a6560;
+      --amber: #e09830;
+      --amber-bg: rgba(224,152,48,0.10);
+      --teal: #2a9e7a;
+      --teal-bg: rgba(42,158,122,0.10);
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      --mono: 'DM Mono', monospace;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 6rem;
+    }
+    
+    /* Navigation */
+    .variant-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(13,12,10,0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem;
+    }
+    
+    .variant-tab {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    
+    .variant-tab:hover { color: var(--text); border-color: var(--muted); }
+    .variant-tab.active { 
+      color: var(--bg); 
+      background: var(--amber); 
+      border-color: var(--amber);
+    }
+    
+    /* Container */
+    .variant-container { display: none; padding: 3rem 4rem; }
+    .variant-container.active { display: block; }
+    
+    .page-title {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 3rem;
+      letter-spacing: -0.01em;
+    }
+    
+    .page-title span {
+      color: var(--dim);
+      font-size: 0.9rem;
+      display: block;
+      margin-top: 0.5rem;
+      font-family: var(--sans);
+    }
+    
+    /* Common Elements */
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--dim);
+    }
+    
+    .tag-accent {
+      border-color: rgba(224, 152, 48, 0.3);
+      color: var(--amber);
+      background: var(--amber-bg);
+    }
+    
+    /* === VARIANT 1: Grid Cards === */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    
+    .grid-card {
+      background: var(--bg);
+      padding: 2.5rem;
+      position: relative;
+      text-decoration: none;
+      display: block;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    
+    .grid-card:hover { background: var(--bg3); }
+    
+    .grid-card.featured { grid-column: span 2; }
+    
+    .grid-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    
+    .grid-card-period {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .grid-card-arrow {
+      font-size: 1rem;
+      color: var(--dim);
+      transition: transform 0.18s, color 0.18s;
+    }
+    
+    .grid-card:hover .grid-card-arrow {
+      transform: translate(3px, -3px);
+      color: var(--amber);
+    }
+    
+    .grid-card-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 300;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+    
+    .grid-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+    
+    .grid-card-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    
+    /* === VARIANT 2: List View === */
+    .list-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border-top: 1px solid var(--border);
+    }
+    
+    .list-item {
+      display: grid;
+      grid-template-columns: 100px 1fr 120px 40px;
+      gap: 2rem;
+      align-items: center;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.18s;
+      cursor: pointer;
+    }
+    
+    .list-item:hover { background: var(--bg2); }
+    
+    .list-period {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--dim);
+      letter-spacing: 0.06em;
+    }
+    
+    .list-content { display: flex; flex-direction: column; gap: 0.4rem; }
+    
+    .list-title {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+    
+    .list-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    
+    .list-tags { display: flex; gap: 0.4rem; justify-content: flex-end; }
+    
+    .list-arrow {
+      color: var(--dim);
+      font-size: 1rem;
+      transition: transform 0.18s, color 0.18s;
+      display: flex;
+      justify-content: flex-end;
+    }
+    
+    .list-item:hover .list-arrow {
+      transform: translateX(4px);
+      color: var(--amber);
+    }
+    
+    /* === VARIANT 3: Bento Grid === */
+    .bento-layout {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    
+    .bento-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.18s, transform 0.18s;
+    }
+    
+    .bento-card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-2px);
+    }
+    
+    .bento-card.large { grid-column: span 2; grid-row: span 2; }
+    .bento-card.medium { grid-column: span 2; }
+    .bento-card.small { grid-column: span 1; }
+    
+    .bento-card .glow {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    
+    .bento-card:hover .glow { opacity: 0.3; }
+    .bento-card.amber .glow { background: var(--amber); }
+    .bento-card.teal .glow { background: var(--teal); }
+    
+    .bento-card-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    
+    .bento-card-icon {
+      font-size: 1.5rem;
+      opacity: 0.5;
+    }
+    
+    .bento-card-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+    
+    .bento-card.large .bento-card-title { font-size: 1.6rem; }
+    
+    .bento-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+    
+    .bento-card.large .bento-card-desc {
+      font-size: 0.9rem;
+      max-width: 80%;
+    }
+    
+    .bento-metrics {
+      display: flex;
+      gap: 2rem;
+      margin-top: auto;
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+    }
+    
+    .bento-metric-value {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 300;
+    }
+    
+    .bento-metric-label {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .variant-container { padding: 2rem; }
+      .grid-layout { grid-template-columns: 1fr; }
+      .grid-card.featured { grid-column: span 1; }
+      .list-item { grid-template-columns: 1fr; gap: 0.5rem; }
+      .list-tags { justify-content: flex-start; }
+      .bento-layout { grid-template-columns: 1fr; }
+      .bento-card.large, .bento-card.medium, .bento-card.small {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+      .bento-card.large .bento-metrics {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        margin-top: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="variant-nav">
+    <button class="variant-tab active" onclick="showVariant('v1')">01 — Grid</button>
+    <button class="variant-tab" onclick="showVariant('v2')">02 — List</button>
+    <button class="variant-tab" onclick="showVariant('v3')">03 — Bento</button>
+  </nav>
+
+  <!-- VARIANT 1: Grid -->
+  <div id="v1" class="variant-container active">
+    <h2 class="page-title">Work <span>Grid layout with featured cards spanning 2 columns</span></h2>
+    
+    <div class="grid-layout">
+      <a class="grid-card featured">
+        <div class="grid-card-header">
+          <span class="grid-card-period">● 2019 — 2024</span>
+          <span class="grid-card-arrow">↗</span>
+        </div>
+        <h3 class="grid-card-title">Cerebralx</h3>
+        <p class="grid-card-desc">A hardtech venture building an LLM-powered SSVEP brain-computer interface for verbally disabled communication. Spanned electronics, firmware, software, and real-time ML.</p>
+        <div class="grid-card-tags">
+          <span class="tag tag-accent">Founder</span>
+          <span class="tag">BCI</span>
+          <span class="tag">SSVEP</span>
+          <span class="tag">Embedded</span>
+        </div>
+      </a>
+      
+      <a class="grid-card">
+        <div class="grid-card-header">
+          <span class="grid-card-period">● 2024 — Present</span>
+          <span class="grid-card-arrow">↗</span>
+        </div>
+        <h3 class="grid-card-title">PerPitch</h3>
+        <p class="grid-card-desc">Building AI-powered infrastructure for the venture capital ecosystem.</p>
+        <div class="grid-card-tags">
+          <span class="tag tag-accent">Current</span>
+          <span class="tag">AI</span>
+          <span class="tag">Venture</span>
+        </div>
+      </a>
+      
+      <a class="grid-card">
+        <div class="grid-card-header">
+          <span class="grid-card-period">● Side Project</span>
+          <span class="grid-card-arrow">↗</span>
+        </div>
+        <h3 class="grid-card-title">Cactus SDK</h3>
+        <p class="grid-card-desc">Cross-platform SDK for running AI agents on-device across iOS and Android.</p>
+        <div class="grid-card-tags">
+          <span class="tag">Mobile</span>
+          <span class="tag">On-device</span>
+          <span class="tag">SDK</span>
+        </div>
+      </a>
+      
+      <a class="grid-card">
+        <div class="grid-card-header">
+          <span class="grid-card-period">● Side Project</span>
+          <span class="grid-card-arrow">↗</span>
+        </div>
+        <h3 class="grid-card-title">Local RAG Systems</h3>
+        <p class="grid-card-desc">Practical retrieval pipelines with ChromaDB, Ollama, and LangChain.</p>
+        <div class="grid-card-tags">
+          <span class="tag">RAG</span>
+          <span class="tag">LLM</span>
+          <span class="tag">Local</span>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- VARIANT 2: List -->
+  <div id="v2" class="variant-container">
+    <h2 class="page-title">Work <span>Minimal list view, focused on scanability</span></h2>
+    
+    <div class="list-layout">
+      <a class="list-item">
+        <span class="list-period">2019 — 2024</span>
+        <div class="list-content">
+          <span class="list-title">Cerebralx</span>
+          <span class="list-desc">LLM-powered SSVEP brain-computer interface for verbally disabled communication</span>
+        </div>
+        <div class="list-tags">
+          <span class="tag tag-accent">Founder</span>
+          <span class="tag">BCI</span>
+        </div>
+        <span class="list-arrow">→</span>
+      </a>
+      
+      <a class="list-item">
+        <span class="list-period">2024 — Present</span>
+        <div class="list-content">
+          <span class="list-title">PerPitch</span>
+          <span class="list-desc">AI-powered infrastructure for venture capital ecosystem</span>
+        </div>
+        <div class="list-tags">
+          <span class="tag tag-accent">Current</span>
+          <span class="tag">AI</span>
+        </div>
+        <span class="list-arrow">→</span>
+      </a>
+      
+      <a class="list-item">
+        <span class="list-period">Side Project</span>
+        <div class="list-content">
+          <span class="list-title">Cactus SDK</span>
+          <span class="list-desc">Cross-platform on-device AI agent SDK for mobile</span>
+        </div>
+        <div class="list-tags">
+          <span class="tag">Mobile</span>
+          <span class="tag">SDK</span>
+        </div>
+        <span class="list-arrow">→</span>
+      </a>
+      
+      <a class="list-item">
+        <span class="list-period">Side Project</span>
+        <div class="list-content">
+          <span class="list-title">Agentic Systems</span>
+          <span class="list-desc">Multi-tool agent flows using LangGraph orchestration</span>
+        </div>
+        <div class="list-tags">
+          <span class="tag">Agents</span>
+          <span class="tag">LangGraph</span>
+        </div>
+        <span class="list-arrow">→</span>
+      </a>
+      
+      <a class="list-item">
+        <span class="list-period">Side Project</span>
+        <div class="list-content">
+          <span class="list-title">Local RAG</span>
+          <span class="list-desc">Practical retrieval with ChromaDB, Ollama, LangChain</span>
+        </div>
+        <div class="list-tags">
+          <span class="tag">RAG</span>
+          <span class="tag">Local</span>
+        </div>
+        <span class="list-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- VARIANT 3: Bento -->
+  <div id="v3" class="variant-container">
+    <h2 class="page-title">Work <span>Bento grid with varied card sizes and ambient glow</span></h2>
+    
+    <div class="bento-layout">
+      <a class="bento-card large amber">
+        <div class="glow"></div>
+        <div class="bento-card-header">
+          <span class="tag tag-accent">Featured</span>
+          <span class="bento-card-icon">●</span>
+        </div>
+        <h3 class="bento-card-title">Cerebralx</h3>
+        <p class="bento-card-desc">A hardtech venture building an LLM-powered SSVEP brain-computer interface for verbally disabled communication. Spanned electronics, firmware, software, and real-time ML under resource constraints.</p>
+        <div class="bento-metrics">
+          <div>
+            <div class="bento-metric-value">4+</div>
+            <div class="bento-metric-label">Years Research</div>
+          </div>
+          <div>
+            <div class="bento-metric-value">50+</div>
+            <div class="bento-metric-label">Investor Pitches</div>
+          </div>
+        </div>
+      </a>
+      
+      <a class="bento-card medium teal">
+        <div class="glow"></div>
+        <div class="bento-card-header">
+          <span class="tag tag-accent">Current</span>
+        </div>
+        <h3 class="bento-card-title">PerPitch</h3>
+        <p class="bento-card-desc">AI-powered infrastructure for the venture capital ecosystem. Building better founder evaluation systems.</p>
+      </a>
+      
+      <a class="bento-card small">
+        <div class="bento-card-header">
+          <span class="tag">SDK</span>
+        </div>
+        <h3 class="bento-card-title">Cactus</h3>
+        <p class="bento-card-desc">Cross-platform on-device AI SDK</p>
+      </a>
+      
+      <a class="bento-card small">
+        <div class="bento-card-header">
+          <span class="tag">Agents</span>
+        </div>
+        <h3 class="bento-card-title">LangGraph</h3>
+        <p class="bento-card-desc">Multi-tool agent orchestration</p>
+      </a>
+      
+      <a class="bento-card small">
+        <div class="bento-card-header">
+          <span class="tag">RAG</span>
+        </div>
+        <h3 class="bento-card-title">Local RAG</h3>
+        <p class="bento-card-desc">ChromaDB + Ollama pipelines</p>
+      </a>
+      
+      <a class="bento-card small">
+        <div class="bento-card-header">
+          <span class="tag">Security</span>
+        </div>
+        <h3 class="bento-card-title">AI Security</h3>
+        <p class="bento-card-desc">Prompt injection, RCE analysis</p>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    function showVariant(id) {
+      document.querySelectorAll('.variant-container').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.variant-tab').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

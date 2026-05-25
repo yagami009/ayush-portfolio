@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { SEO } from "../components/SEO";
 import { Link } from "wouter";
 
 export function Now() {
@@ -24,6 +25,11 @@ export function Now() {
 
   return (
     <div className="page">
+      <SEO
+        title="Now"
+        description="What Ayush Mahajan is actively building — CallPilot (voice AI, live), AI-Swaraj (sovereign AI, Phase 2), AgentCommerce (on-chain escrow, 67 tests), and PerPitch (founder evaluation)."
+        path="/now"
+      />
       <div className="page-hero">
         <div className="container">
           <div className="eyebrow">Now</div>
@@ -50,39 +56,52 @@ export function Now() {
               <div className="now-item">
                 <div className="now-item-num">01</div>
                 <div>
-                  <div className="now-item-title">PerPitch</div>
+                  <div className="now-item-title">CallPilot</div>
                   <div className="now-item-body">
-                    Building AI-powered infrastructure for systematic founder evaluation. The gap between how investors assess founders and what actually predicts success is large — and measurable. PerPitch is the infrastructure for that measurement layer: behavioral intelligence, longitudinal founder profiles, and observability-style assessment tools for investors and accelerators.
+                    AI voicemail with intelligent escalation. Answers missed calls, captures who called and why in 25-40 seconds, detects urgency, and sends structured WhatsApp cards within 60 seconds. Twilio + Deepgram Aura + Claude via Pipecat. 34 calls tested, MVP shipping.
                   </div>
                   <div className="now-item-status s-active">
                     <span className="s-dot"></span>
-                    Active — primary focus
+                    Live — shipping
                   </div>
                 </div>
               </div>
               <div className="now-item">
                 <div className="now-item-num">02</div>
                 <div>
-                  <div className="now-item-title">Offline-first personal AI agent</div>
+                  <div className="now-item-title">AI-Swaraj</div>
                   <div className="now-item-body">
-                    Cross-platform agent app built on Cactus SDK for iOS and Android. The constraint: offline-first from the start, not retrofitted. Network availability shouldn't determine what your AI can do. This pulls together everything I care about right now — orchestration, local inference, device-native interaction, memory, and privacy.
+                    129M MoE+MLA model built from scratch for Indian context. Runs entirely offline on phone, Pi, or MacBook. Loss dropped from 4.82 to 2.17 on TinyStories. 87.7% health eval score. Constraint-native design: power cuts, connectivity, privacy.
                   </div>
-                  <div className="now-item-status s-progress">
+                  <div className="now-item-status s-active">
                     <span className="s-dot"></span>
-                    In progress
+                    Active — model training
                   </div>
                 </div>
               </div>
               <div className="now-item">
                 <div className="now-item-num">03</div>
                 <div>
-                  <div className="now-item-title">Multi-tool LangGraph agent</div>
+                  <div className="now-item-title">AgentCommerce</div>
                   <div className="now-item-body">
-                    Orchestration-heavy agent project centred on multi-step coordination, tool usage, and structured agent behaviour. The interesting part isn't the tools — it's the control flow. How do you design an agent system you can reason about when things go wrong, not just prompt when things go right?
+                    ERC-8183-aligned escrow protocol for AI-agent labor markets. AI agents post bounties, humans deliver work, payments release via smart contract. No black-box escrow, no opaque platform fees. 67 Foundry tests passing, 12 contract functions.
                   </div>
-                  <div className="now-item-status s-progress">
+                  <div className="now-item-status s-active">
                     <span className="s-dot"></span>
-                    In progress
+                    Active — 67 tests passing
+                  </div>
+                </div>
+              </div>
+              <div className="now-item">
+                <div className="now-item-num">04</div>
+                <div>
+                  <div className="now-item-title">PerPitch</div>
+                  <div className="now-item-body">
+                    Building AI-powered infrastructure for systematic founder evaluation. Behavioral intelligence, longitudinal founder profiles, and observability-style assessment tools for investors and accelerators.
+                  </div>
+                  <div className="now-item-status s-active">
+                    <span className="s-dot"></span>
+                    Active
                   </div>
                 </div>
               </div>
@@ -193,14 +212,27 @@ export function Now() {
           </div>
 
           {/* Contact CTA */}
-          <div className="contact-strip reveal">
+          <div id="contact" className="contact-strip reveal">
             <div>
               <div className="cs-h3">If any of this resonates, reach out.</div>
               <p className="cs-p">
                 I try to respond to every message that's specific and genuine. No templates, no pitches — just tell me what you're working on and why you're writing.
               </p>
+              <div className="cs-links">
+                <a href="mailto:mahajan.ayush9909@gmail.com" className="cs-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span>Email</span>
+                </a>
+                <a href="https://calendly.com/mahajan-ayush9909/30min" target="_blank" rel="noopener noreferrer" className="cs-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="m9 16 2 2 4-4"/></svg>
+                  <span>Book 30min</span>
+                </a>
+                <a href="https://wa.me/917206077760?text=Hey%20Ayush%2C%20I%20came%20across%20your%20portfolio" target="_blank" rel="noopener noreferrer" className="cs-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
             </div>
-            <a href="mailto:mahajan.ayush9909@gmail.com" className="btn btn-amber">Send a message</a>
           </div>
         </div>
       </div>
@@ -273,6 +305,14 @@ export function Now() {
         }
         .cs-h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 300; color: var(--text); margin-bottom: 0.5rem; }
         .cs-p { font-size: 0.84rem; color: var(--muted); line-height: 1.7; font-weight: 300; max-width: 460px; }
+        .cs-links { display: flex; gap: 1.5rem; margin-top: 1.25rem; }
+        .cs-link {
+          display: inline-flex; align-items: center; gap: 0.45rem;
+          font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.06em;
+          color: var(--dim); text-decoration: none;
+          transition: color 0.15s;
+        }
+        .cs-link:hover { color: var(--amber); }
 
         @media (max-width: 700px) {
           .contact-strip { grid-template-columns: 1fr; gap: 1.5rem; }
