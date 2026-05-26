@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { track } from "../lib/analytics";
 
 export function Footer() {
   const [time, setTime] = useState("");
@@ -96,6 +97,7 @@ export function Footer() {
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--dim)")}
+              onClick={() => track.socialClick(s.label)}
             >
               {s.icon}
             </a>

@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { AgentPanel } from "../components/AgentPanel";
 import { MagneticBtn } from "../components/MagneticBtn";
 import { SEO } from "../components/SEO";
+import { useScrollDepth } from "../lib/useTracking";
 
 function useCountUp(target: number, duration = 1500, start = 0): React.RefObject<HTMLSpanElement> {
   const ref = useRef<HTMLSpanElement>(null);
@@ -42,6 +43,7 @@ function CountNum({ value, suffix }: { value: number; suffix: string }) {
 }
 
 export function Home() {
+  useScrollDepth("home");
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

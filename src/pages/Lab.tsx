@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { SEO } from "../components/SEO";
+import { useScrollDepth } from "../lib/useTracking";
 
 export function Lab() {
+  useScrollDepth("lab");
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

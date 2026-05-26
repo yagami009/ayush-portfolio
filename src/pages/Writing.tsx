@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { SEO } from "../components/SEO";
+import { useScrollDepth } from "../lib/useTracking";
 
 const posts = [
   {
@@ -111,6 +112,7 @@ const posts = [
 ];
 
 export function Writing() {
+  useScrollDepth("writing");
   const [openPost, setOpenPost] = useState<string | null>(null);
 
   useEffect(() => {

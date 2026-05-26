@@ -2,6 +2,7 @@ import { Switch, Route, Router as WouterRouter } from "wouter";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { HelmetProvider } from "react-helmet-async";
+import { PostHogProvider } from "./lib/analytics";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import { Home } from "./pages/Home";
@@ -102,18 +103,20 @@ function App() {
   return (
     <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
       <HelmetProvider>
-        <Cursor />
-        <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
-          <header>
-            <Nav />
-          </header>
-          <main style={{ flex: 1 }}>
-            <Router />
-          </main>
-          <Footer />
-        </div>
-        <Analytics />
-        <SpeedInsights />
+        <PostHogProvider>
+          <Cursor />
+          <div style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}>
+            <header>
+              <Nav />
+            </header>
+            <main style={{ flex: 1 }}>
+              <Router />
+            </main>
+            <Footer />
+          </div>
+          <Analytics />
+          <SpeedInsights />
+        </PostHogProvider>
       </HelmetProvider>
     </WouterRouter>
   );
